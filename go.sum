@@ -10,8 +10,14 @@ github.com/benbjohnson/clock v1.1.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZx
 github.com/benbjohnson/clock v1.3.0 h1:ip6w0uFQkncKQ979AypyG0ER7mqUSBdKLOgAle/AT8A=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/cresta/magehelper v0.0.56/go.mod h1:yXPw5SVc3lOdsxOeqd7WbMHD+UZDYcpUunUcPa9CVgk=
-github.com/cresta/syncer v0.0.0-20230713194948-4d3e3e9c4ce6 h1:EPeqDjbdGfWMb18pME69yxN0x7Hiq8Irs06paSV5R7c=
-github.com/cresta/syncer v0.0.0-20230713194948-4d3e3e9c4ce6/go.mod h1:KDx6xSOSa8z2r7XmckLKJkiT6fyMbzE6NnE603LLoNk=
+github.com/cresta/syncer v0.0.0-20230713232203-2f65b5d16684 h1:mYWTLX9ACHyI8qkIyGwJVVmlTm0tc2u5FlNnsBZ0XPQ=
+github.com/cresta/syncer v0.0.0-20230713232203-2f65b5d16684/go.mod h1:KDx6xSOSa8z2r7XmckLKJkiT6fyMbzE6NnE603LLoNk=
+github.com/cresta/syncer v0.0.0-20230713232346-29c52ce09dab h1:dguFcAS8u8K72e7Id2IFAtk4LGgM1TUxeMRz+BqM0vE=
+github.com/cresta/syncer v0.0.0-20230713232346-29c52ce09dab/go.mod h1:KDx6xSOSa8z2r7XmckLKJkiT6fyMbzE6NnE603LLoNk=
+github.com/cresta/syncer v0.0.0-20230713232518-a890444ab612 h1:uiIrU7gxkhOOq2FA26rmwrHRwVl39TFPgBEINfALSvk=
+github.com/cresta/syncer v0.0.0-20230713232518-a890444ab612/go.mod h1:KDx6xSOSa8z2r7XmckLKJkiT6fyMbzE6NnE603LLoNk=
+github.com/cresta/syncer v0.0.0-20230713232533-0a42f130d8de h1:BB+aMgfGSUV1zi7L2dHDItweyv2rznluuCJ6h54hjjg=
+github.com/cresta/syncer v0.0.0-20230713232533-0a42f130d8de/go.mod h1:KDx6xSOSa8z2r7XmckLKJkiT6fyMbzE6NnE603LLoNk=
 github.com/cresta/zapctx v0.0.3 h1:787OCBdKJtqd+/91GKPslyuLRYe5V6+ntZO8G9zCL4g=
 github.com/cresta/zapctx v0.0.3/go.mod h1:A8g9eMLauIcd33USu16CNANWy2X9XFKRrskmE8IGDyM=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

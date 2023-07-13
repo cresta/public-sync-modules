@@ -3,7 +3,7 @@ module github.com/cresta/sync-autoapprove
 go 1.20
 
 require (
-	github.com/cresta/syncer v0.0.0-20230713194948-4d3e3e9c4ce6
+	github.com/cresta/syncer v0.0.0-20230713232533-0a42f130d8de
 	go.uber.org/fx v1.20.0
 )
 
