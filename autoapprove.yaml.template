@@ -13,4 +13,4 @@ jobs:
       - name: Approve
         uses: cresta/action-auto-approve-pr@v1
         with:
-          token: ${{ secrets.CRESTA_ROBOT_AUTO_APPROVE_TOKEN }}
+          token: {{ `${{ secrets.CRESTA_ROBOT_AUTO_APPROVE_TOKEN }}` }}
