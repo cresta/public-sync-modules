@@ -1,3 +1,3 @@
-# sync-autoapprove
+# public-sync-modules
 
-Supports enabling your repository to be auto approved by renovatebot PRs
+A collection of syncs we use for public code.
