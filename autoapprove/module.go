@@ -1,4 +1,4 @@
-package sync_autoapprove
+package autoapprove
 
 import (
 	_ "embed"
@@ -16,10 +16,10 @@ type Config struct {
 }
 
 //go:embed autoapprove.yaml.template
-var autoapproveTemplateStr string
+var templateStr string
 
 var Module = templatefiles.NewModule("autoapprove", map[string]string{
-	".github/workflows/autoapprove.yaml": autoapproveTemplateStr,
+	".github/workflows/autoapprove.yaml": templateStr,
 }, syncer.PriorityNormal, func(runConfig syncer.RunConfig) (interface{}, error) {
 	var cfg Config
 	if err := runConfig.Decode(&cfg); err != nil {
