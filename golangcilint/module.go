@@ -1,8 +1,7 @@
-package buildgolib
+package golangcilint
 
 import (
 	_ "embed"
-
 	"github.com/cresta/syncer/sharedapi/drift/templatefiles"
 	"github.com/cresta/syncer/sharedapi/syncer"
 )
@@ -11,18 +10,13 @@ func init() {
 	syncer.FxRegister(Module)
 }
 
-type Config struct {
-	RunsOn   string   `yaml:"runs_on"`
-	PostTest []string `yaml:"post_test"`
-}
-
-//go:embed buildgolib.yaml.template
-var templateStr string
+//go:embed .golangci.yaml.template
+var templateStrGolangCi string
 
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
-	Name: "autoapprove",
+	Name: "golangcilint",
 	Files: map[string]string{
-		".github/workflows/buildgolib.yaml": templateStr,
+		".golangci.yml": templateStrGolangCi,
 	},
 	Priority: syncer.PriorityNormal,
 	Decoder: func(runConfig syncer.RunConfig) (Config, error) {
@@ -33,3 +27,5 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 		return cfg, nil
 	},
 })
+
+type Config struct{}

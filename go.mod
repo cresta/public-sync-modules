@@ -2,7 +2,7 @@ module github.com/cresta/public-sync-modules
 
 go 1.20
 
-require github.com/cresta/syncer v0.0.0-20230713235949-5cafce73a536
+require github.com/cresta/syncer v0.0.0-20230717221551-de0ed83aeaf3
 
 require (
 	github.com/Masterminds/goutils v1.1.1 // indirect

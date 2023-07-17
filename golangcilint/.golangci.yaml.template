@@ -1,0 +1,28 @@
+# {{ .RunData.AutogenMsg }}
+
+run:
+  go: "1.20"
+  deadline: 20m
+linters:
+  disable-all: true
+  enable: {{/* We probably want to support dynamic enable/disable for linters here by making them template variables */}}
+    - errcheck
+    - exportloopref
+    - goconst
+    - gocritic
+    - gofmt
+    - goimports
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - megacheck
+    - misspell
+    - nakedret
+    - prealloc
+    - revive
+    - staticcheck
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unused

@@ -2,9 +2,8 @@ package autoapprove
 
 import (
 	_ "embed"
-
+	"github.com/cresta/syncer/sharedapi/drift/templatefiles"
 	"github.com/cresta/syncer/sharedapi/syncer"
-	"github.com/cresta/syncer/sharedapi/templatefiles"
 )
 
 func init() {
@@ -18,12 +17,17 @@ type Config struct {
 //go:embed autoapprove.yaml.template
 var templateStr string
 
-var Module = templatefiles.NewModule("autoapprove", map[string]string{
-	".github/workflows/autoapprove.yaml": templateStr,
-}, syncer.PriorityNormal, func(runConfig syncer.RunConfig) (interface{}, error) {
-	var cfg Config
-	if err := runConfig.Decode(&cfg); err != nil {
-		return nil, err
-	}
-	return cfg, nil
+var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
+	Name: "autoapprove",
+	Files: map[string]string{
+		".github/workflows/autoapprove.yaml": templateStr,
+	},
+	Priority: syncer.PriorityNormal,
+	Decoder: func(runConfig syncer.RunConfig) (Config, error) {
+		var cfg Config
+		if err := runConfig.Decode(&cfg); err != nil {
+			return cfg, err
+		}
+		return cfg, nil
+	},
 })

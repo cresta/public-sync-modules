@@ -19,6 +19,14 @@ github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ3
 github.com/cresta/magehelper v0.0.56/go.mod h1:yXPw5SVc3lOdsxOeqd7WbMHD+UZDYcpUunUcPa9CVgk=
 github.com/cresta/syncer v0.0.0-20230713235949-5cafce73a536 h1:HseAu/lt4kGTpr5CqukK/2Xs2uW1pN6RxbhdsJNAEOE=
 github.com/cresta/syncer v0.0.0-20230713235949-5cafce73a536/go.mod h1:xACj4k2Snkerp9hI6OphGf6Lvzh0628Iqb6ZBHaEEjE=
+github.com/cresta/syncer v0.0.0-20230714183323-5c215ed0abfc h1:qMv+ljwz3jMcCq+2Ddd5ceLDjBixO+xrG/OB7F/v2HY=
+github.com/cresta/syncer v0.0.0-20230714183323-5c215ed0abfc/go.mod h1:MwepoGboQIzkjTwHgmANO3ASGO3rlEj1iyacpMbz+oM=
+github.com/cresta/syncer v0.0.0-20230714185134-a689e17483d3 h1:ZVx93AsH6HXxfCFGOvxCw4tKQIIg8c/n7ohQ+wgKCNs=
+github.com/cresta/syncer v0.0.0-20230714185134-a689e17483d3/go.mod h1:MwepoGboQIzkjTwHgmANO3ASGO3rlEj1iyacpMbz+oM=
+github.com/cresta/syncer v0.0.0-20230717215801-c31aae53b476 h1:gu1l3zWZDeLMGzIbFBxVIDxpOIEn7Pd4zh5SG1B50gc=
+github.com/cresta/syncer v0.0.0-20230717215801-c31aae53b476/go.mod h1:MwepoGboQIzkjTwHgmANO3ASGO3rlEj1iyacpMbz+oM=
+github.com/cresta/syncer v0.0.0-20230717221551-de0ed83aeaf3 h1:ZsedxhjqsxZShjLBBEpIQipPjvob8N12YbFGiMrdRkw=
+github.com/cresta/syncer v0.0.0-20230717221551-de0ed83aeaf3/go.mod h1:MwepoGboQIzkjTwHgmANO3ASGO3rlEj1iyacpMbz+oM=
 github.com/cresta/zapctx v0.0.3 h1:787OCBdKJtqd+/91GKPslyuLRYe5V6+ntZO8G9zCL4g=
 github.com/cresta/zapctx v0.0.3/go.mod h1:A8g9eMLauIcd33USu16CNANWy2X9XFKRrskmE8IGDyM=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
