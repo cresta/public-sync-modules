@@ -27,6 +27,8 @@ github.com/cresta/syncer v0.0.0-20230717215801-c31aae53b476 h1:gu1l3zWZDeLMGzIbF
 github.com/cresta/syncer v0.0.0-20230717215801-c31aae53b476/go.mod h1:MwepoGboQIzkjTwHgmANO3ASGO3rlEj1iyacpMbz+oM=
 github.com/cresta/syncer v0.0.0-20230717221551-de0ed83aeaf3 h1:ZsedxhjqsxZShjLBBEpIQipPjvob8N12YbFGiMrdRkw=
 github.com/cresta/syncer v0.0.0-20230717221551-de0ed83aeaf3/go.mod h1:MwepoGboQIzkjTwHgmANO3ASGO3rlEj1iyacpMbz+oM=
+github.com/cresta/syncer v0.0.0-20230717231132-114361ead9a7 h1:C/9xwNNs1mCL2QZsFXK1l7kKvKHmxhXOBuGHfLllZyU=
+github.com/cresta/syncer v0.0.0-20230717231132-114361ead9a7/go.mod h1:wR07EeWDJwTKEvH5rrTcatEH3Dyx6r9w1hFSyetFhwM=
 github.com/cresta/zapctx v0.0.3 h1:787OCBdKJtqd+/91GKPslyuLRYe5V6+ntZO8G9zCL4g=
 github.com/cresta/zapctx v0.0.3/go.mod h1:A8g9eMLauIcd33USu16CNANWy2X9XFKRrskmE8IGDyM=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

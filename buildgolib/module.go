@@ -20,7 +20,7 @@ type Config struct {
 var templateStr string
 
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
-	Name: "autoapprove",
+	Name: "buildgolib",
 	Files: map[string]string{
 		".github/workflows/buildgolib.yaml": templateStr,
 	},

@@ -1,7 +1,9 @@
 package golangcilint
 
 import (
+	"context"
 	_ "embed"
+	"github.com/cresta/public-sync-modules/buildgolib"
 	"github.com/cresta/syncer/sharedapi/drift/templatefiles"
 	"github.com/cresta/syncer/sharedapi/syncer"
 )
@@ -26,6 +28,18 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 		}
 		return cfg, nil
 	},
+	Setup: syncer.SetupSyncerFunc(func(ctx context.Context, runData *syncer.SyncRun) error {
+		goSyncerIface, exists := runData.Registry.Get("buildgolib")
+		if !exists {
+			return nil
+		}
+		goSyncer := goSyncerIface.(*templatefiles.Generator[buildgolib.Config])
+		goSyncer.AddMutator(func(cfg buildgolib.Config) buildgolib.Config {
+			cfg.PostTest = append(cfg.PostTest, "golangci-lint run")
+			return cfg
+		})
+		return nil
+	}),
 })
 
 type Config struct{}
