@@ -23,11 +23,5 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 		".github/workflows/autoapprove.yaml": templateStr,
 	},
 	Priority: syncer.PriorityNormal,
-	Decoder: func(runConfig syncer.RunConfig) (Config, error) {
-		var cfg Config
-		if err := runConfig.Decode(&cfg); err != nil {
-			return cfg, err
-		}
-		return cfg, nil
-	},
+	Decoder:  templatefiles.DefaultDecoder[Config](),
 })
