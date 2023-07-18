@@ -2,6 +2,7 @@ package autoapprove
 
 import (
 	_ "embed"
+
 	"github.com/cresta/syncer/sharedapi/drift/templatefiles"
 	"github.com/cresta/syncer/sharedapi/syncer"
 )

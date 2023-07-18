@@ -3,6 +3,7 @@ package golangcilint
 import (
 	"context"
 	_ "embed"
+
 	"github.com/cresta/public-sync-modules/buildgolib"
 	"github.com/cresta/syncer/sharedapi/drift/templatefiles"
 	"github.com/cresta/syncer/sharedapi/syncer"
