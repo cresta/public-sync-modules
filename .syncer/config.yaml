@@ -13,9 +13,13 @@ logic:
   - source: github.com/cresta/public-sync-modules/autoapprove
   - source: github.com/cresta/public-sync-modules/buildgolib
   - source: github.com/cresta/public-sync-modules/golangcilint
+  - source: github.com/cresta/public-sync-modules/setlicense
 
 # The syncs to run.  Each sync will be run in order.
 syncs:
   - logic: autoapprove
   - logic: buildgolib
   - logic: golangcilint
+  - logic: setlicense
+    config:
+      license: "Apache-2.0"

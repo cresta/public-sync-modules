@@ -3,7 +3,6 @@ package golangcilint
 import (
 	"context"
 	_ "embed"
-	"fmt"
 	"github.com/cresta/public-sync-modules/buildgolib"
 	"github.com/cresta/syncer/sharedapi/drift/templatefiles"
 	"github.com/cresta/syncer/sharedapi/syncer"
@@ -19,24 +18,6 @@ var templateStrGolangCi string
 //go:embed updatedbuildgolib.yaml.template
 var updatedBuildGoLibTemplate string
 
-type UpdateGoBuild struct{}
-
-func (t *UpdateGoBuild) Mutate(ctx context.Context, runData *syncer.SyncRun, cfg buildgolib.Config) (buildgolib.Config, error) {
-	updatedBuildGoLib, err := templatefiles.NewTemplate("updatedbuildgolib", updatedBuildGoLibTemplate)
-	if err != nil {
-		return cfg, fmt.Errorf("unable to parse updatedbuildgolib template: %w", err)
-	}
-	res, err := templatefiles.ExecuteTemplateOnConfig(ctx, runData, cfg, updatedBuildGoLib)
-	if err != nil {
-		return cfg, fmt.Errorf("unable to execute template: %w", err)
-	}
-	cfg.PostTest = append(cfg.PostTest, res)
-	return cfg, nil
-}
-
-type MutatorSetup struct {
-}
-
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 	Name: "golangcilint",
 	Files: map[string]string{
@@ -44,12 +25,17 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 	},
 	Priority: syncer.PriorityNormal,
 	Decoder:  templatefiles.DefaultDecoder[Config](),
-	Setup: syncer.SetupSyncerFunc(func(ctx context.Context, runData *syncer.SyncRun) error {
-		if err := syncer.AddMutator[buildgolib.Config](runData.Registry, "buildgolib", &UpdateGoBuild{}); err != nil {
-			return fmt.Errorf("unable to add mutator: %w", err)
-		}
-		return nil
-	}),
+	Setup: &syncer.SetupMutator[buildgolib.Config]{
+		Name: "buildgolib",
+		Mutator: &templatefiles.GenericConfigMutator[buildgolib.Config]{
+			Name:        "buildgolib",
+			TemplateStr: updatedBuildGoLibTemplate,
+			MutateFunc: func(_ context.Context, renderedTemplate string, cfg buildgolib.Config) (buildgolib.Config, error) {
+				cfg.PostTest = append(cfg.PostTest, renderedTemplate)
+				return cfg, nil
+			},
+		},
+	},
 })
 
 type Config struct{}
