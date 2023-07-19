@@ -1,0 +1,18 @@
+version: 1
+
+config:
+  testValue: "1"
+
+logic:
+  - source: github.com/cresta/public-sync-modules/autoapprove
+  - source: github.com/cresta/public-sync-modules/buildgolib
+  - source: github.com/cresta/public-sync-modules/golangcilint
+  - source: github.com/cresta/public-sync-modules/setlicense
+
+syncs:
+  - logic: autoapprove
+  - logic: buildgolib
+  - logic: golangcilint
+  - logic: setlicense
+    config:
+      license: "Apache-2.0"

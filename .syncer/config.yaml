@@ -1,25 +1,7 @@
-# The version number for this config syntax.  syncer currently only supports version 1
 version: 1
-# General, shared config.  It is up to the logic to decide what to do with this
 config:
-  name: "syncer"
+  name: "public-sync-modules"
   primaryOwner: "infra-squad"
 
-# The logic to use for syncing.  Each logic can be used [0..N] times (never, once, or many).
-# Each logic will become an `import _ "..."` statement inside the generated sync file and expects to have a init()
-# function that will register syncing logic
-logic:
-  - source: github.com/cresta/syncer/sharedapi/drift/staticfile
-  - source: github.com/cresta/public-sync-modules/autoapprove
-  - source: github.com/cresta/public-sync-modules/buildgolib
-  - source: github.com/cresta/public-sync-modules/golangcilint
-  - source: github.com/cresta/public-sync-modules/setlicense
-
-# The syncs to run.  Each sync will be run in order.
-syncs:
-  - logic: autoapprove
-  - logic: buildgolib
-  - logic: golangcilint
-  - logic: setlicense
-    config:
-      license: "Apache-2.0"
+children:
+  - source: github.com/cresta/public-sync-modules/opensourcegolib
