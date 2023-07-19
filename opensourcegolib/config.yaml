@@ -2,7 +2,7 @@ version: 1
 
 config:
   company: "cresta"
-  owner: @cresta/infrastructure-squad
+  owner: "@cresta/infrastructure-squad"
 
 logic:
   - source: github.com/cresta/public-sync-modules/autoapprove
