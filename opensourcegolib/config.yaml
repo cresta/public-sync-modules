@@ -1,7 +1,8 @@
 version: 1
 
 config:
-  testValue: "1"
+  company: "cresta"
+  owner: @cresta/infrastructure-squad
 
 logic:
   - source: github.com/cresta/public-sync-modules/autoapprove

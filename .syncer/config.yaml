@@ -1,7 +1,6 @@
 version: 1
 config:
   name: "public-sync-modules"
-  primaryOwner: "infra-squad"
 
 children:
   - source: github.com/cresta/public-sync-modules/opensourcegolib
