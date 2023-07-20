@@ -19,4 +19,4 @@ jobs:
       - name: Check for changes
         uses: cresta/action-syncer/checkpr@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: {{ `${{ secrets.GITHUB_TOKEN }}` }}
