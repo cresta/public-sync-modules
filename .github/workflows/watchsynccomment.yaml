@@ -23,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ steps.get-branch.outputs.branch }}
       - name: Run apply
         uses: cresta/action-syncer/updatepr@main
         with:
