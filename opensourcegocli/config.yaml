@@ -1,0 +1,23 @@
+version: 1
+
+config:
+  company: "cresta"
+  owner: "@cresta/infrastructure-squad"
+
+logic:
+  - source: github.com/cresta/public-sync-modules/autoapprove
+  - source: github.com/cresta/public-sync-modules/buildgolib
+  - source: github.com/cresta/public-sync-modules/golangcilint
+  - source: github.com/cresta/public-sync-modules/setlicense
+  - source: github.com/cresta/public-sync-modules/synceractions
+  - source: github.com/cresta/public-sync-modules/goreleasercli
+
+syncs:
+  - logic: autoapprove
+  - logic: buildgolib
+  - logic: golangcilint
+  - logic: synceractions
+  - logic: goreleasercli
+  - logic: setlicense
+    config:
+      license: "Apache-2.0"
