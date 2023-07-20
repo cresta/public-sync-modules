@@ -27,4 +27,7 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 	Decoder:  templatefiles.DefaultDecoder[Config](),
 })
 
-type Config struct{}
+type Config struct {
+	LinkerVarPath string
+	MainDir       string
+}

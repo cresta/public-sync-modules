@@ -11,8 +11,8 @@ builds:
       - windows
       - darwin
     ldflags:
-      - -s -w -X {{ .LinkerVarPath }}.version={{ `{{.Version}}` }} -X {{ .LinkerVarPath }}.commit={{ `{{.Commit}} `}} -X {{ .LinkerVarPath }}.date={{ `{{.Date}} `}} -X {{ .LinkerVarPath }}.builtBy=goreleaser
-    main:  {{ .MainDir }}
+      - -s -w -X {{ .Config.LinkerVarPath }}.version={{ `{{.Version}}` }} -X {{ .Config.LinkerVarPath }}.commit={{ `{{.Commit}} `}} -X {{ .Config.LinkerVarPath }}.date={{ `{{.Date}} `}} -X {{ .Config.LinkerVarPath }}.builtBy=goreleaser
+    main:  {{ .Config.MainDir }}
 
 archives:
   - format: tar.gz
