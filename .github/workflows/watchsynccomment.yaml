@@ -27,4 +27,4 @@ jobs:
       - name: Run apply
         uses: cresta/action-syncer/updatepr@main
         with:
-          token: ${{ steps.generate_token.outputs.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
