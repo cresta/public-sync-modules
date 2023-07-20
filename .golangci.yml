@@ -26,3 +26,6 @@ linters:
     - typecheck
     - unconvert
     - unused
+
+
+    test
