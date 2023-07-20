@@ -1,3 +1,4 @@
+# {{ .RunData.AutogenMsg }}
 name: Syncer reforamt
 
 on:

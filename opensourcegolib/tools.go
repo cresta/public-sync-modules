@@ -9,4 +9,5 @@ import (
 	_ "github.com/cresta/public-sync-modules/buildgolib"
 	_ "github.com/cresta/public-sync-modules/golangcilint"
 	_ "github.com/cresta/public-sync-modules/setlicense"
+	_ "github.com/cresta/public-sync-modules/synceractions"
 )

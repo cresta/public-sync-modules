@@ -1,3 +1,4 @@
+# {{ .RunData.AutogenMsg }}
 name: Test for sync changes
 
 on:

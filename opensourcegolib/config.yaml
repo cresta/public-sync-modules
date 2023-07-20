@@ -9,11 +9,13 @@ logic:
   - source: github.com/cresta/public-sync-modules/buildgolib
   - source: github.com/cresta/public-sync-modules/golangcilint
   - source: github.com/cresta/public-sync-modules/setlicense
+  - source: github.com/cresta/public-sync-modules/synceractions
 
 syncs:
   - logic: autoapprove
   - logic: buildgolib
   - logic: golangcilint
+  - logic: synceractions
   - logic: setlicense
     config:
       license: "Apache-2.0"
