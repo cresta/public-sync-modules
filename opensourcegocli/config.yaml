@@ -11,10 +11,12 @@ logic:
   - source: github.com/cresta/public-sync-modules/setlicense
   - source: github.com/cresta/public-sync-modules/synceractions
   - source: github.com/cresta/public-sync-modules/goreleasercli
+  - source: github.com/cresta/public-sync-modules/gitignore
 
 syncs:
   - logic: autoapprove
   - logic: buildgolib
+  - logic: gitignore
   - logic: golangcilint
   - logic: synceractions
   - logic: goreleasercli

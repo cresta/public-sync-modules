@@ -1,0 +1,8 @@
+{{- .Config.PreAutogenMsg -}}
+# -- {{ .Config.SectionStart }}
+# {{ .RunData.AutogenMsg }}
+{{ range $v := .Config.UniqueLines -}}
+{{ $v }}
+{{ end -}}
+# -- {{ .Config.SectionEnd }}
+{{ .Config.PostAutogenMsg }}
