@@ -14,6 +14,14 @@ builds:
       - -s -w -X {{ .Config.LinkerVarPath }}.version={{ `{{.Version}}` }} -X {{ .Config.LinkerVarPath }}.commit={{ `{{.Commit}} `}} -X {{ .Config.LinkerVarPath }}.date={{ `{{.Date}} `}} -X {{ .Config.LinkerVarPath }}.builtBy=goreleaser
     main:  {{ .Config.MainDir }}
 
+brews:
+  - repository:
+      owner: getsyncer
+      name: homebrew-tap
+      git:
+        url: git@github.com:getsyncer/homebrew-tap.git
+        private_key: {{ `'{{ .Env.HOMEBREW_DEPLOY_KEY }}'`}}
+
 archives:
   - format: tar.gz
     # this name template makes the OS and Arch compatible with the results of uname.
