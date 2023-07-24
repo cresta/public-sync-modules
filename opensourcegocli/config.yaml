@@ -5,7 +5,6 @@ config:
   owner: "@cresta/infrastructure-squad"
 
 logic:
-  - source: github.com/cresta/public-sync-modules/autoapprove
   - source: github.com/cresta/public-sync-modules/buildgolib
   - source: github.com/cresta/public-sync-modules/golangcilint
   - source: github.com/cresta/public-sync-modules/setlicense
@@ -14,7 +13,6 @@ logic:
   - source: github.com/cresta/public-sync-modules/gitignore
 
 syncs:
-  - logic: autoapprove
   - logic: buildgolib
   - logic: gitignore
   - logic: golangcilint

@@ -5,14 +5,12 @@ config:
   owner: "@cresta/infrastructure-squad"
 
 logic:
-  - source: github.com/cresta/public-sync-modules/autoapprove
   - source: github.com/cresta/public-sync-modules/buildgolib
   - source: github.com/cresta/public-sync-modules/golangcilint
   - source: github.com/cresta/public-sync-modules/setlicense
   - source: github.com/cresta/public-sync-modules/synceractions
 
 syncs:
-  - logic: autoapprove
   - logic: buildgolib
   - logic: golangcilint
   - logic: synceractions
