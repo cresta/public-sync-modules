@@ -12,6 +12,6 @@ jobs:
     if: github.actor == 'self-hosted-renovatebot[bot]'
     steps:
       - name: Approve
-        uses: cresta/action-auto-approve-pr@v1
+        uses: getsyncer/action-auto-approve-pr@v1
         with:
-          token: {{ `${{ secrets.CRESTA_ROBOT_AUTO_APPROVE_TOKEN }}` }}
+          token: {{ `${{ secrets.getsyncer_ROBOT_AUTO_APPROVE_TOKEN }}` }}

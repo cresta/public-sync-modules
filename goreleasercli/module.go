@@ -3,10 +3,10 @@ package goreleasercli
 import (
 	_ "embed"
 
-	"github.com/cresta/public-sync-modules/gitignore"
+	"github.com/getsyncer/public-sync-modules/gitignore"
 
-	"github.com/cresta/syncer/sharedapi/drift/templatefiles"
-	"github.com/cresta/syncer/sharedapi/syncer"
+	"github.com/getsyncer/syncer/sharedapi/drift/templatefiles"
+	"github.com/getsyncer/syncer/sharedapi/syncer"
 )
 
 func init() {

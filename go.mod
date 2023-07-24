@@ -1,9 +1,9 @@
-module github.com/cresta/public-sync-modules
+module github.com/getsyncer/public-sync-modules
 
 go 1.20
 
 require (
-	github.com/cresta/syncer v0.0.0-20230719195714-6cc31036b165
+	github.com/getsyncer/syncer v0.0.0-20230719195714-6cc31036b165
 	github.com/cresta/zapctx v0.0.3
 	go.uber.org/fx v1.20.0
 )

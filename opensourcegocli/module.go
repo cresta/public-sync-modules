@@ -3,7 +3,7 @@ package opensourcegocli
 import (
 	_ "embed"
 
-	"github.com/cresta/syncer/sharedapi/syncer"
+	"github.com/getsyncer/syncer/sharedapi/syncer"
 )
 
 func init() {
@@ -13,4 +13,4 @@ func init() {
 //go:embed config.yaml
 var configYaml []byte
 
-var Module = syncer.NewChildModule("github.com/cresta/public-sync-modules/opensourcegocli", configYaml)
+var Module = syncer.NewChildModule("github.com/getsyncer/public-sync-modules/opensourcegocli", configYaml)

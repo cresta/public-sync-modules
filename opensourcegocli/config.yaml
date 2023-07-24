@@ -1,16 +1,16 @@
 version: 1
 
 config:
-  company: "cresta"
-  owner: "@cresta/infrastructure-squad"
+  company: "getsyncer"
+  owner: "@getsyncer/infrastructure-squad"
 
 logic:
-  - source: github.com/cresta/public-sync-modules/buildgolib
-  - source: github.com/cresta/public-sync-modules/golangcilint
-  - source: github.com/cresta/public-sync-modules/setlicense
-  - source: github.com/cresta/public-sync-modules/synceractions
-  - source: github.com/cresta/public-sync-modules/goreleasercli
-  - source: github.com/cresta/public-sync-modules/gitignore
+  - source: github.com/getsyncer/public-sync-modules/buildgolib
+  - source: github.com/getsyncer/public-sync-modules/golangcilint
+  - source: github.com/getsyncer/public-sync-modules/setlicense
+  - source: github.com/getsyncer/public-sync-modules/synceractions
+  - source: github.com/getsyncer/public-sync-modules/goreleasercli
+  - source: github.com/getsyncer/public-sync-modules/gitignore
 
 syncs:
   - logic: buildgolib

@@ -3,4 +3,4 @@ config:
   name: "public-sync-modules"
 
 children:
-  - source: github.com/cresta/public-sync-modules/opensourcegolib
+  - source: github.com/getsyncer/public-sync-modules/opensourcegolib

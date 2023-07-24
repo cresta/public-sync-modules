@@ -5,9 +5,9 @@ import (
 	_ "embed"
 	"fmt"
 
-	"github.com/cresta/syncer/sharedapi/files"
-	"github.com/cresta/syncer/sharedapi/syncer"
 	"github.com/cresta/zapctx"
+	"github.com/getsyncer/syncer/sharedapi/files"
+	"github.com/getsyncer/syncer/sharedapi/syncer"
 	"go.uber.org/fx"
 )
 
