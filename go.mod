@@ -3,8 +3,8 @@ module github.com/getsyncer/public-sync-modules
 go 1.20
 
 require (
-	github.com/getsyncer/syncer v0.0.0-20230719195714-6cc31036b165
 	github.com/cresta/zapctx v0.0.3
+	github.com/getsyncer/syncer v0.0.4
 	go.uber.org/fx v1.20.0
 )
 
@@ -18,7 +18,7 @@ require (
 	github.com/imdario/mergo v0.3.16 // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
-	github.com/sergi/go-diff v1.2.0 // indirect
+	github.com/sergi/go-diff v1.3.1 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
 	github.com/spf13/cast v1.5.1 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
