@@ -38,7 +38,7 @@ func (c Config) PreAutogenMsg() string {
 
 func (c Config) UniqueLines() []string {
 	seen := map[string]struct{}{}
-	var ret []string
+	ret := make([]string, 0, len(c.Ignores))
 	for _, ignoreLine := range c.Ignores {
 		ignoreLine = strings.TrimSpace(ignoreLine)
 		if ignoreLine == "" {
