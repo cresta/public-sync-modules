@@ -71,11 +71,7 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 		".gitignore": templateStr,
 	},
 	Setup: &syncer.SetupMutator[Config]{
-		Name: Name,
-		Mutator: &syncer.ParserMutator[Config]{
-			Path:  ".gitignore",
-			Conf:  existingfileparser.RecommendedNewlineSeparatedConfig(),
-			Apply: syncer.ConfigApply[Config](),
-		},
+		Name:    Name,
+		Mutator: syncer.DefaultParseMutator[Config](".gitignore"),
 	},
 })
