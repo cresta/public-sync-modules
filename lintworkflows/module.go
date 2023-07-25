@@ -1,4 +1,4 @@
-package buildgolib
+package lintworkflows
 
 import (
 	_ "embed"
@@ -11,17 +11,15 @@ func init() {
 }
 
 type Config struct {
-	RunsOn   string   `yaml:"runs_on"`
-	PostTest []string `yaml:"post_test"`
 }
 
-//go:embed buildgolib.yaml.template
+//go:embed lintworkflows.yaml.template
 var templateStr string
 
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
-	Name: "buildgolib",
+	Name: "lintworkflows",
 	Files: map[string]string{
-		".github/workflows/buildgolib.yaml": templateStr,
+		".github/workflows/lintworkflows.yaml": templateStr,
 	},
 	Priority: syncer.PriorityNormal,
 	Decoder:  templatefiles.DefaultDecoder[Config](),
