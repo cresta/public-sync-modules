@@ -33,6 +33,4 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 })
 
 type Config struct {
-	LinkerVarPath string `yaml:"linkerVarPath"`
-	MainDir       string `yaml:"mainDir"`
 }
