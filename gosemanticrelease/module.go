@@ -3,8 +3,8 @@ package gosemanticrelease
 import (
 	"context"
 	_ "embed"
-	"github.com/getsyncer/public-sync-modules/buildgolib"
 
+	"github.com/getsyncer/public-sync-modules/buildgolib"
 	"github.com/getsyncer/syncer/sharedapi/drift/templatefiles"
 	"github.com/getsyncer/syncer/sharedapi/syncer"
 )

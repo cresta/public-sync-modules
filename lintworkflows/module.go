@@ -2,6 +2,7 @@ package lintworkflows
 
 import (
 	_ "embed"
+
 	"github.com/getsyncer/syncer/sharedapi/drift/templatefiles"
 	"github.com/getsyncer/syncer/sharedapi/syncer"
 )
