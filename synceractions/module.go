@@ -20,12 +20,12 @@ var watchsynccommentTemplateStr string
 //go:embed checksyncer.yaml.template
 var checksyncerTemplateStr string
 
+const Name = syncer.Name("synceractions")
+
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
-	Name: "synceractions",
+	Name: Name,
 	Files: map[string]string{
 		".github/workflows/watchsynccomment.yaml": watchsynccommentTemplateStr,
 		".github/workflows/checksync.yaml":        checksyncerTemplateStr,
 	},
-	Priority: syncer.PriorityNormal,
-	Decoder:  templatefiles.DefaultDecoder[Config](),
 })

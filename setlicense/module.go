@@ -32,6 +32,8 @@ func New(logger *zapctx.Logger) *Syncer {
 	}
 }
 
+const Name = syncer.Name("setlicense")
+
 func (l *Syncer) Run(ctx context.Context, runData *syncer.SyncRun) (*files.System[*files.StateWithChangeReason], error) {
 	var ret files.System[*files.StateWithChangeReason]
 	var cfg Config
@@ -59,7 +61,7 @@ func (l *Syncer) Run(ctx context.Context, runData *syncer.SyncRun) (*files.Syste
 	if !ok {
 		return nil, fmt.Errorf("unknown license %s", cfg.License)
 	}
-	if err := ret.Add(files.Path("LICENSE"), &files.StateWithChangeReason{
+	if err := ret.Add("LICENSE", &files.StateWithChangeReason{
 		State: files.State{
 			Mode:          0644,
 			Contents:      []byte(licenseText),
@@ -74,8 +76,8 @@ func (l *Syncer) Run(ctx context.Context, runData *syncer.SyncRun) (*files.Syste
 	return &ret, nil
 }
 
-func (l *Syncer) Name() string {
-	return "setlicense"
+func (l *Syncer) Name() syncer.Name {
+	return Name
 }
 
 func (l *Syncer) Priority() syncer.Priority {

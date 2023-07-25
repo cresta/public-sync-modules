@@ -19,16 +19,16 @@ var templateStrGoReleaser string
 //go:embed goreleaser.yaml.template
 var templateStrActionReleaser string
 
+const Name = syncer.Name("goreleasercli")
+
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
-	Name: "goreleasercli",
+	Name: Name,
 	Files: map[string]string{
 		".goreleaser.yaml":                  templateStrGoReleaser,
 		".github/workflows/goreleaser.yaml": templateStrActionReleaser,
 	},
-	Priority: syncer.PriorityNormal,
-	Decoder:  templatefiles.DefaultDecoder[Config](),
 	Setup: &syncer.SetupMutator[gitignore.Config]{
-		Name: "gitignore",
+		Name: gitignore.Name,
 		Mutator: syncer.SimpleConfigMutator[gitignore.Config](func(cfg gitignore.Config) (gitignore.Config, error) {
 			cfg.Ignores = append(cfg.Ignores, "/dist/")
 			return cfg, nil

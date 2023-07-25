@@ -63,15 +63,15 @@ func (c Config) ApplyParse(parse *existingfileparser.ParseResult) (Config, error
 //go:embed .gitignore.template
 var templateStr string
 
+const Name = syncer.Name("gitignore")
+
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
-	Name: "gitignore",
+	Name: Name,
 	Files: map[string]string{
 		".gitignore": templateStr,
 	},
-	Priority: syncer.PriorityNormal,
-	Decoder:  templatefiles.DefaultDecoder[Config](),
 	Setup: &syncer.SetupMutator[Config]{
-		Name: "gitignore",
+		Name: Name,
 		Mutator: &syncer.ParserMutator[Config]{
 			Path:  ".gitignore",
 			Conf:  existingfileparser.RecommendedNewlineSeparatedConfig(),

@@ -19,20 +19,19 @@ var templateStrGolangCi string
 //go:embed updatedbuildgolib.yaml.template
 var updatedBuildGoLibTemplate string
 
+const Name = syncer.Name("golangcilint")
+
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
-	Name: "golangcilint",
+	Name: Name,
 	Files: map[string]string{
 		".golangci.yml": templateStrGolangCi,
 	},
-	Priority: syncer.PriorityNormal,
-	Decoder:  templatefiles.DefaultDecoder[Config](),
 	Setup: &syncer.SetupMutator[buildgolib.Config]{
-		Name: "buildgolib",
+		Name: buildgolib.Name,
 		Mutator: &templatefiles.GenericConfigMutator[buildgolib.Config]{
-			Name:        "buildgolib",
 			TemplateStr: updatedBuildGoLibTemplate,
 			MutateFunc: func(_ context.Context, renderedTemplate string, cfg buildgolib.Config) (buildgolib.Config, error) {
-				cfg.PostTest = append(cfg.PostTest, renderedTemplate)
+				cfg.Jobs = append(cfg.Jobs, renderedTemplate)
 				return cfg, nil
 			},
 		},

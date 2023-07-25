@@ -13,4 +13,6 @@ func init() {
 //go:embed config.yaml
 var configYaml []byte
 
-var Module = syncer.NewChildModule("github.com/getsyncer/public-sync-modules/opensourcegolib", configYaml)
+const Name = syncer.Name("github.com/getsyncer/public-sync-modules/opensourcegolib")
+
+var Module = syncer.NewChildModule(Name, configYaml)

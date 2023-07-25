@@ -16,17 +16,16 @@ func init() {
 //go:embed bump_tag_step.yaml.template
 var templateStr string
 
+const Name = syncer.Name("gosemanticrelease")
+
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
-	Name:     "gosemanticrelease",
-	Priority: syncer.PriorityNormal,
-	Decoder:  templatefiles.DefaultDecoder[Config](),
+	Name: Name,
 	Setup: &syncer.SetupMutator[buildgolib.Config]{
-		Name: "buildgolib",
+		Name: buildgolib.Name,
 		Mutator: &templatefiles.GenericConfigMutator[buildgolib.Config]{
-			Name:        "add semantic release bump tag step",
 			TemplateStr: templateStr,
 			MutateFunc: func(_ context.Context, renderedTemplate string, cfg buildgolib.Config) (buildgolib.Config, error) {
-				cfg.PostTest = append(cfg.PostTest, renderedTemplate)
+				cfg.Jobs = append(cfg.Jobs, renderedTemplate)
 				return cfg, nil
 			},
 		},

@@ -16,11 +16,11 @@ type Config struct {
 //go:embed lintworkflows.yaml.template
 var templateStr string
 
+const Name = syncer.Name("lintworkflows")
+
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
-	Name: "lintworkflows",
+	Name: Name,
 	Files: map[string]string{
 		".github/workflows/lintworkflows.yaml": templateStr,
 	},
-	Priority: syncer.PriorityNormal,
-	Decoder:  templatefiles.DefaultDecoder[Config](),
 })
