@@ -3,6 +3,7 @@ package gosemanticrelease
 import (
 	"context"
 	_ "embed"
+	"sort"
 
 	"github.com/getsyncer/public-sync-modules/buildgo"
 
@@ -43,7 +44,9 @@ func (c Config) AllRequiredSteps() []string {
 	ret := make([]string, 0, len(c.RequiredSteps))
 	ret = append(ret, "build", "test")
 	ret = append(ret, c.RequiredSteps...)
-	return removeDuplicate(ret)
+	ret = removeDuplicate(ret)
+	sort.Strings(ret)
+	return ret
 }
 
 func removeDuplicate[T comparable](items []T) []T {
