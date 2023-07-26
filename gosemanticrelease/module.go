@@ -41,9 +41,19 @@ type Config struct {
 
 func (c Config) AllRequiredSteps() []string {
 	ret := make([]string, 0, len(c.RequiredSteps))
-	for _, step := range c.RequiredSteps {
-		ret = append(ret, step)
-	}
 	ret = append(ret, "build", "test")
+	ret = append(ret, c.RequiredSteps...)
+	return removeDuplicate(ret)
+}
+
+func removeDuplicate[T comparable](items []T) []T {
+	ret := make([]T, 0, len(items))
+	seen := make(map[T]struct{})
+	for _, item := range items {
+		if _, ok := seen[item]; !ok {
+			ret = append(ret, item)
+			seen[item] = struct{}{}
+		}
+	}
 	return ret
 }
