@@ -1,4 +1,4 @@
-package buildgolib
+package buildgo
 
 import (
 	_ "embed"
@@ -11,7 +11,8 @@ func init() {
 	syncer.FxRegister(Module)
 }
 
-const Name = syncer.Name("buildgolib")
+const Name = syncer.Name("buildgo")
+const RunPriority = syncer.PriorityNormal
 
 type Config struct {
 	RunsOn   string   `yaml:"runs_on"`
@@ -19,12 +20,13 @@ type Config struct {
 	Jobs     []string `yaml:"jobs"`
 }
 
-//go:embed buildgolib.yaml.template
+//go:embed buildgo.yaml.template
 var templateStr string
 
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
-	Name: Name,
+	Name:     Name,
+	Priority: RunPriority,
 	Files: map[string]string{
-		".github/workflows/buildgolib.yaml": templateStr,
+		".github/workflows/buildgo.yaml": templateStr,
 	},
 })

@@ -4,7 +4,10 @@ import (
 	"context"
 	_ "embed"
 
-	"github.com/getsyncer/public-sync-modules/buildgolib"
+	"github.com/getsyncer/public-sync-modules/gosemanticrelease"
+
+	"github.com/getsyncer/public-sync-modules/buildgo"
+
 	"github.com/getsyncer/syncer/sharedapi/drift/templatefiles"
 	"github.com/getsyncer/syncer/sharedapi/syncer"
 )
@@ -26,16 +29,28 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 	Files: map[string]string{
 		".golangci.yml": templateStrGolangCi,
 	},
-	Setup: &syncer.SetupMutator[buildgolib.Config]{
-		Name: buildgolib.Name,
-		Mutator: &templatefiles.GenericConfigMutator[buildgolib.Config]{
-			TemplateStr: updatedBuildGoLibTemplate,
-			MutateFunc: func(_ context.Context, renderedTemplate string, cfg buildgolib.Config) (buildgolib.Config, error) {
-				cfg.Jobs = append(cfg.Jobs, renderedTemplate)
-				return cfg, nil
+	Setup: syncer.MultiSetupSyncer([]syncer.SetupSyncer{
+		&syncer.SetupMutator[buildgo.Config]{
+			Name: buildgo.Name,
+			Mutator: &templatefiles.GenericConfigMutator[buildgo.Config]{
+				TemplateStr: updatedBuildGoLibTemplate,
+				MutateFunc: func(_ context.Context, renderedTemplate string, cfg buildgo.Config) (buildgo.Config, error) {
+					cfg.Jobs = append(cfg.Jobs, renderedTemplate)
+					return cfg, nil
+				},
 			},
 		},
-	},
+		&syncer.SetupMutator[gosemanticrelease.Config]{
+			Name: gosemanticrelease.Name,
+			Mutator: &templatefiles.GenericConfigMutator[gosemanticrelease.Config]{
+				TemplateStr: "",
+				MutateFunc: func(_ context.Context, renderedTemplate string, cfg gosemanticrelease.Config) (gosemanticrelease.Config, error) {
+					cfg.RequiredSteps = append(cfg.RequiredSteps, "lint")
+					return cfg, nil
+				},
+			},
+		},
+	}),
 })
 
 type Config struct{}

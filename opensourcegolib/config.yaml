@@ -2,22 +2,24 @@ version: 1
 
 config:
   company: "getsyncer"
-  owner: "@getsyncer/infrastructure-squad"
+  owner: "@getsyncer/maintainers"
 
 logic:
-  - source: github.com/getsyncer/public-sync-modules/buildgolib
+  - source: github.com/getsyncer/public-sync-modules/buildgo
+  - source: github.com/getsyncer/public-sync-modules/gitignore
   - source: github.com/getsyncer/public-sync-modules/golangcilint
-  - source: github.com/getsyncer/public-sync-modules/setlicense
-  - source: github.com/getsyncer/public-sync-modules/synceractions
   - source: github.com/getsyncer/public-sync-modules/gosemanticrelease
   - source: github.com/getsyncer/public-sync-modules/lintworkflows
+  - source: github.com/getsyncer/public-sync-modules/setlicense
+  - source: github.com/getsyncer/public-sync-modules/synceractions
 
 syncs:
-  - logic: buildgolib
+  - logic: buildgo
+  - logic: gitignore
   - logic: golangcilint
-  - logic: synceractions
-  - logic: lintworkflows
   - logic: gosemanticrelease
+  - logic: lintworkflows
   - logic: setlicense
     config:
       license: "Apache-2.0"
+  - logic: synceractions

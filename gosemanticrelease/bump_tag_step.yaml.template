@@ -2,7 +2,8 @@ bump_tag:
   # All pushes to main bump our semantic release tag, but only if the build passes.  That way, we don't
   # release any tags that don't pass tests.
   runs-on: ubuntu-latest
-  needs: [build, test, lint]
+  needs:
+{{ .Config.AllRequiredSteps | toYaml | indent 4 }}
   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
   steps:
     - uses: actions/checkout@v3

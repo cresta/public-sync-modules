@@ -1,5 +1,5 @@
 # {{ .RunData.AutogenMsg }}
-name: Build and test go library
+name: Build and test go code
 
 on:
   push:
