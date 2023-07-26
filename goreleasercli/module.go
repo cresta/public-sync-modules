@@ -5,8 +5,8 @@ import (
 
 	"github.com/getsyncer/public-sync-modules/gitignore"
 
-	"github.com/getsyncer/syncer/sharedapi/drift/templatefiles"
-	"github.com/getsyncer/syncer/sharedapi/syncer"
+	"github.com/getsyncer/syncer-core/drift/templatefiles"
+	"github.com/getsyncer/syncer-core/syncer"
 )
 
 func init() {

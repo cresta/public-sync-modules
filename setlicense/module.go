@@ -6,8 +6,8 @@ import (
 	"fmt"
 
 	"github.com/cresta/zapctx"
-	"github.com/getsyncer/syncer/sharedapi/files"
-	"github.com/getsyncer/syncer/sharedapi/syncer"
+	"github.com/getsyncer/syncer-core/files"
+	"github.com/getsyncer/syncer-core/syncer"
 	"go.uber.org/fx"
 )
 

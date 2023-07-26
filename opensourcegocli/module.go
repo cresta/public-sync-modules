@@ -3,7 +3,7 @@ package opensourcegocli
 import (
 	_ "embed"
 
-	"github.com/getsyncer/syncer/sharedapi/syncer"
+	"github.com/getsyncer/syncer-core/syncer"
 )
 
 func init() {
