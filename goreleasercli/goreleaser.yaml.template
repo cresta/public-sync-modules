@@ -1,10 +1,10 @@
 # {{ .RunData.AutogenMsg }}
-
 name: Release binaries using GoReleaser
 
 on:
-  pull_request:
   push:
+    tags:
+      - v*
 
 permissions:
   contents: write
