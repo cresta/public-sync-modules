@@ -4,11 +4,13 @@ go 1.20
 
 require (
 	github.com/cresta/zapctx v0.0.3
-	github.com/getsyncer/syncer v1.4.2
+	github.com/getsyncer/syncer v1.5.2
+	github.com/getsyncer/syncer-core v1.0.0
 	go.uber.org/fx v1.20.0
 )
 
 require (
+	dario.cat/mergo v1.0.0 // indirect
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver/v3 v3.2.1 // indirect
 	github.com/Masterminds/sprig/v3 v3.2.3 // indirect
@@ -18,7 +20,6 @@ require (
 	github.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883 // indirect
 	github.com/cloudflare/circl v1.3.3 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
-	github.com/getsyncer/syncer-core v1.0.0 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.4.1 // indirect
 	github.com/go-git/go-git/v5 v5.8.1 // indirect
