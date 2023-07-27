@@ -26,19 +26,22 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 	Name: Name,
 	Files: map[string]string{
 		// Note: Empty string filename is removed by PostGenProcessor
-		"": templateStr,
+		"_go_": templateStr,
+		"_gh_": templateStr,
 	},
 	Priority: buildgo.RunPriority + 1, // Force it to run before buildgo so our mutation is rendered.
 	PostGenProcessor: templatefiles.PostGenProcessorList{
 		&templatefiles.PostGenConfigMutator[buildgo.Config]{
-			ToMutate: buildgo.Name,
+			ToMutate:     buildgo.Name,
+			TemplateName: "_go_",
 			PostGenMutatorFunc: func(_ context.Context, renderedTemplate string, cfg buildgo.Config) (buildgo.Config, error) {
 				cfg.Jobs = append(cfg.Jobs, renderedTemplate)
 				return cfg, nil
 			},
 		},
 		&templatefiles.PostGenConfigMutator[buildaction.Config]{
-			ToMutate: buildaction.Name,
+			ToMutate:     buildaction.Name,
+			TemplateName: "_gh_",
 			PostGenMutatorFunc: func(_ context.Context, renderedTemplate string, cfg buildaction.Config) (buildaction.Config, error) {
 				cfg.Jobs = append(cfg.Jobs, renderedTemplate)
 				return cfg, nil

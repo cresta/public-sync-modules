@@ -1,4 +1,4 @@
-package opensourcegocli
+package opensourceghaction
 
 import (
 	_ "embed"
@@ -15,4 +15,4 @@ var configYaml []byte
 
 var Module = syncer.NewChildModule(Name, configYaml)
 
-const Name = syncer.Name("github.com/getsyncer/public-sync-modules/opensourcegocli")
+const Name = syncer.Name("github.com/getsyncer/public-sync-modules/opensourceghaction")
