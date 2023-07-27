@@ -5,6 +5,8 @@ import (
 	_ "embed"
 	"sort"
 
+	"github.com/getsyncer/public-sync-modules/buildaction"
+
 	"github.com/getsyncer/public-sync-modules/buildgo"
 
 	"github.com/getsyncer/syncer-core/drift/templatefiles"
@@ -27,11 +29,20 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 		"": templateStr,
 	},
 	Priority: buildgo.RunPriority + 1, // Force it to run before buildgo so our mutation is rendered.
-	PostGenProcessor: &templatefiles.PostGenConfigMutator[buildgo.Config]{
-		ToMutate: buildgo.Name,
-		PostGenMutatorFunc: func(_ context.Context, renderedTemplate string, cfg buildgo.Config) (buildgo.Config, error) {
-			cfg.Jobs = append(cfg.Jobs, renderedTemplate)
-			return cfg, nil
+	PostGenProcessor: templatefiles.PostGenProcessorList{
+		&templatefiles.PostGenConfigMutator[buildgo.Config]{
+			ToMutate: buildgo.Name,
+			PostGenMutatorFunc: func(_ context.Context, renderedTemplate string, cfg buildgo.Config) (buildgo.Config, error) {
+				cfg.Jobs = append(cfg.Jobs, renderedTemplate)
+				return cfg, nil
+			},
+		},
+		&templatefiles.PostGenConfigMutator[buildaction.Config]{
+			ToMutate: buildaction.Name,
+			PostGenMutatorFunc: func(_ context.Context, renderedTemplate string, cfg buildaction.Config) (buildaction.Config, error) {
+				cfg.Jobs = append(cfg.Jobs, renderedTemplate)
+				return cfg, nil
+			},
 		},
 	},
 })

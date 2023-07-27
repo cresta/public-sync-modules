@@ -1,0 +1,23 @@
+version: 1
+
+config:
+  company: "getsyncer"
+  owner: "@getsyncer/maintainers"
+
+logic:
+  - source: github.com/getsyncer/public-sync-modules/buildaction
+  - source: github.com/getsyncer/public-sync-modules/gitignore
+  - source: github.com/getsyncer/public-sync-modules/gosemanticrelease
+  - source: github.com/getsyncer/public-sync-modules/lintworkflows
+  - source: github.com/getsyncer/public-sync-modules/setlicense
+  - source: github.com/getsyncer/public-sync-modules/synceractions
+
+syncs:
+  - logic: buildaction
+  - logic: gitignore
+  - logic: gosemanticrelease
+  - logic: lintworkflows
+  - logic: setlicense
+    config:
+      license: "Apache-2.0"
+  - logic: synceractions

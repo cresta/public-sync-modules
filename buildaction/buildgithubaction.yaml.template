@@ -1,0 +1,30 @@
+# {{ .RunData.AutogenMsg }}
+name: Build and test github action
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+{{- range $val := .Config.PostTest }}
+{{ indent 6 $val }}
+{{- end -}}
+{{- range $val := .Config.Jobs }}
+{{ indent 2 $val }}
+{{- end -}}
