@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/cresta/zapctx v0.0.3
-	github.com/getsyncer/syncer-core v1.0.0
+	github.com/getsyncer/syncer-core v1.1.0
 	go.uber.org/fx v1.20.0
 )
 
@@ -16,7 +16,6 @@ require (
 	github.com/Microsoft/go-winio v0.6.1 // indirect
 	github.com/ProtonMail/go-crypto v0.0.0-20230717121422-5aa5874ade95 // indirect
 	github.com/acomagu/bufpipe v1.0.4 // indirect
-	github.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883 // indirect
 	github.com/cloudflare/circl v1.3.3 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
