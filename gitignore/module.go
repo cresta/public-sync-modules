@@ -21,7 +21,7 @@ func init() {
 }
 
 type Config struct {
-	Ignores        []string `yaml:"line"`
+	Ignores        []string `yaml:"ignores"`
 	postAutogenMsg string
 	preAutogenMsg  string
 }

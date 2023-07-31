@@ -1,9 +1,7 @@
-//go:build syncer
-// +build syncer
-
 package opensourcegolib
 
 // TODO: Auto generate this from the config.yaml file
+//nolint:revive
 import (
 	_ "github.com/getsyncer/public-sync-modules/buildgo"
 	_ "github.com/getsyncer/public-sync-modules/gitignore"
