@@ -5,14 +5,19 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/getsyncer/syncer-core/files/existingfileparser"
+	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles/templatemutator"
 
-	"github.com/getsyncer/syncer-core/drift/templatefiles"
-	"github.com/getsyncer/syncer-core/syncer"
+	"github.com/getsyncer/syncer-core/fxregistry"
+
+	"github.com/getsyncer/syncer-core/config"
+
+	"github.com/getsyncer/syncer-core/files/stateloader"
+
+	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
 )
 
 func init() {
-	syncer.FxRegister(Module)
+	fxregistry.Register(Module)
 }
 
 type Config struct {
@@ -22,11 +27,11 @@ type Config struct {
 }
 
 func (c Config) SectionStart() string {
-	return existingfileparser.RecommendedSectionStart
+	return stateloader.RecommendedSectionStart
 }
 
 func (c Config) SectionEnd() string {
-	return existingfileparser.RecommendedSectionEnd
+	return stateloader.RecommendedSectionEnd
 }
 
 func (c Config) PostAutogenMsg() string {
@@ -54,7 +59,7 @@ func (c Config) UniqueLines() []string {
 	return ret
 }
 
-func (c Config) ApplyParse(parse *existingfileparser.ParseResult) (Config, error) {
+func (c Config) ApplyParse(parse *stateloader.ParseResult) (Config, error) {
 	c.preAutogenMsg = parse.PreAutogenMsg
 	c.postAutogenMsg = parse.PostAutogenMsg
 	return c, nil
@@ -63,15 +68,15 @@ func (c Config) ApplyParse(parse *existingfileparser.ParseResult) (Config, error
 //go:embed .gitignore.template
 var templateStr string
 
-const Name = syncer.Name("gitignore")
+const Name = config.Name("gitignore")
 
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 	Name: Name,
 	Files: map[string]string{
 		".gitignore": templateStr,
 	},
-	Setup: &syncer.SetupMutator[Config]{
+	Setup: &templatemutator.SetupMutator[Config]{
 		Name:    Name,
-		Mutator: syncer.DefaultParseMutator[Config](".gitignore"),
+		Mutator: templatemutator.DefaultParseMutator[Config](".gitignore"),
 	},
 })

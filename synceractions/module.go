@@ -3,12 +3,15 @@ package synceractions
 import (
 	_ "embed"
 
-	"github.com/getsyncer/syncer-core/drift/templatefiles"
-	"github.com/getsyncer/syncer-core/syncer"
+	"github.com/getsyncer/syncer-core/fxregistry"
+
+	"github.com/getsyncer/syncer-core/config"
+
+	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
 )
 
 func init() {
-	syncer.FxRegister(Module)
+	fxregistry.Register(Module)
 }
 
 type Config struct {
@@ -20,7 +23,7 @@ var watchsynccommentTemplateStr string
 //go:embed checksyncer.yaml.template
 var checksyncerTemplateStr string
 
-const Name = syncer.Name("synceractions")
+const Name = config.Name("synceractions")
 
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 	Name: Name,

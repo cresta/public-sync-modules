@@ -3,16 +3,21 @@ package buildaction
 import (
 	_ "embed"
 
-	"github.com/getsyncer/syncer-core/drift/templatefiles"
-	"github.com/getsyncer/syncer-core/syncer"
+	"github.com/getsyncer/syncer-core/drift"
+
+	"github.com/getsyncer/syncer-core/fxregistry"
+
+	"github.com/getsyncer/syncer-core/config"
+
+	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
 )
 
 func init() {
-	syncer.FxRegister(Module)
+	fxregistry.Register(Module)
 }
 
-const Name = syncer.Name("buildaction")
-const RunPriority = syncer.PriorityNormal
+const Name = config.Name("buildaction")
+const RunPriority = drift.PriorityNormal
 
 type Config struct {
 	RunsOn   string   `yaml:"runs_on"`

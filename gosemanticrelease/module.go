@@ -5,22 +5,25 @@ import (
 	_ "embed"
 	"sort"
 
+	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles/templatemutator"
+
+	"github.com/getsyncer/syncer-core/fxregistry"
+
+	"github.com/getsyncer/syncer-core/config"
+
 	"github.com/getsyncer/public-sync-modules/buildaction"
-
 	"github.com/getsyncer/public-sync-modules/buildgo"
-
-	"github.com/getsyncer/syncer-core/drift/templatefiles"
-	"github.com/getsyncer/syncer-core/syncer"
+	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
 )
 
 func init() {
-	syncer.FxRegister(Module)
+	fxregistry.Register(Module)
 }
 
 //go:embed bump_tag_step.yaml.template
 var templateStr string
 
-const Name = syncer.Name("gosemanticrelease")
+const Name = config.Name("gosemanticrelease")
 
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 	Name: Name,
@@ -31,7 +34,7 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 	},
 	Priority: buildgo.RunPriority + 1, // Force it to run before buildgo so our mutation is rendered.
 	PostGenProcessor: templatefiles.PostGenProcessorList{
-		&templatefiles.PostGenConfigMutator[buildgo.Config]{
+		&templatemutator.PostGenConfigMutator[buildgo.Config]{
 			ToMutate:     buildgo.Name,
 			TemplateName: "_go_",
 			PostGenMutatorFunc: func(_ context.Context, renderedTemplate string, cfg buildgo.Config) (buildgo.Config, error) {
@@ -39,7 +42,7 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 				return cfg, nil
 			},
 		},
-		&templatefiles.PostGenConfigMutator[buildaction.Config]{
+		&templatemutator.PostGenConfigMutator[buildaction.Config]{
 			ToMutate:     buildaction.Name,
 			TemplateName: "_gh_",
 			PostGenMutatorFunc: func(_ context.Context, renderedTemplate string, cfg buildaction.Config) (buildaction.Config, error) {

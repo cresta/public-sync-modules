@@ -5,14 +5,19 @@ import (
 	_ "embed"
 	"fmt"
 
+	"github.com/getsyncer/syncer-core/drift"
+
+	"github.com/getsyncer/syncer-core/fxregistry"
+
+	"github.com/getsyncer/syncer-core/config"
+
 	"github.com/cresta/zapctx"
 	"github.com/getsyncer/syncer-core/files"
-	"github.com/getsyncer/syncer-core/syncer"
 	"go.uber.org/fx"
 )
 
 func init() {
-	syncer.FxRegister(Module)
+	fxregistry.Register(Module)
 }
 
 //go:embed Apache-2.0.LICENSE
@@ -32,9 +37,9 @@ func New(logger *zapctx.Logger) *Syncer {
 	}
 }
 
-const Name = syncer.Name("setlicense")
+const Name = config.Name("setlicense")
 
-func (l *Syncer) Run(ctx context.Context, runData *syncer.SyncRun) (*files.System[*files.StateWithChangeReason], error) {
+func (l *Syncer) DetectDrift(ctx context.Context, runData *drift.RunData) (*files.System[*files.StateWithChangeReason], error) {
 	var ret files.System[*files.StateWithChangeReason]
 	var cfg Config
 	if err := runData.RunConfig.Decode(&cfg); err != nil {
@@ -76,21 +81,21 @@ func (l *Syncer) Run(ctx context.Context, runData *syncer.SyncRun) (*files.Syste
 	return &ret, nil
 }
 
-func (l *Syncer) Name() syncer.Name {
+func (l *Syncer) Name() config.Name {
 	return Name
 }
 
-func (l *Syncer) Priority() syncer.Priority {
-	return syncer.PriorityNormal
+func (l *Syncer) Priority() drift.Priority {
+	return drift.PriorityNormal
 }
 
-var _ syncer.DriftSyncer = &Syncer{}
+var _ drift.Detector = &Syncer{}
 
 var Module = fx.Module("setlicense",
 	fx.Provide(
 		fx.Annotate(
 			New,
-			fx.As(new(syncer.DriftSyncer)),
+			fx.As(new(drift.Detector)),
 			fx.ResultTags(`group:"syncers"`),
 		),
 	),

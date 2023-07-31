@@ -3,12 +3,15 @@ package lintworkflows
 import (
 	_ "embed"
 
-	"github.com/getsyncer/syncer-core/drift/templatefiles"
-	"github.com/getsyncer/syncer-core/syncer"
+	"github.com/getsyncer/syncer-core/fxregistry"
+
+	"github.com/getsyncer/syncer-core/config"
+
+	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
 )
 
 func init() {
-	syncer.FxRegister(Module)
+	fxregistry.Register(Module)
 }
 
 type Config struct {
@@ -17,7 +20,7 @@ type Config struct {
 //go:embed lintworkflows.yaml.template
 var templateStr string
 
-const Name = syncer.Name("lintworkflows")
+const Name = config.Name("lintworkflows")
 
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 	Name: Name,

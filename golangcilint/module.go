@@ -4,16 +4,22 @@ import (
 	"context"
 	_ "embed"
 
+	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles/templatemutator"
+
+	"github.com/getsyncer/syncer-core/fxregistry"
+
+	"github.com/getsyncer/syncer-core/config"
+
 	"github.com/getsyncer/public-sync-modules/gosemanticrelease"
 
 	"github.com/getsyncer/public-sync-modules/buildgo"
 
-	"github.com/getsyncer/syncer-core/drift/templatefiles"
+	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
 	"github.com/getsyncer/syncer-core/syncer"
 )
 
 func init() {
-	syncer.FxRegister(Module)
+	fxregistry.Register(Module)
 }
 
 //go:embed .golangci.yaml.template
@@ -22,7 +28,7 @@ var templateStrGolangCi string
 //go:embed updatedbuildgolib.yaml.template
 var updatedBuildGoLibTemplate string
 
-const Name = syncer.Name("golangcilint")
+const Name = config.Name("golangcilint")
 
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 	Name: Name,
@@ -30,7 +36,7 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 		".golangci.yml": templateStrGolangCi,
 	},
 	Setup: syncer.MultiSetupSyncer([]syncer.SetupSyncer{
-		&syncer.SetupMutator[buildgo.Config]{
+		&templatemutator.SetupMutator[buildgo.Config]{
 			Name: buildgo.Name,
 			Mutator: &templatefiles.GenericConfigMutator[buildgo.Config]{
 				TemplateStr: updatedBuildGoLibTemplate,
@@ -40,7 +46,7 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 				},
 			},
 		},
-		&syncer.SetupMutator[gosemanticrelease.Config]{
+		&templatemutator.SetupMutator[gosemanticrelease.Config]{
 			Name: gosemanticrelease.Name,
 			Mutator: &templatefiles.GenericConfigMutator[gosemanticrelease.Config]{
 				TemplateStr: "",
