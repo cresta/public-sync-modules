@@ -15,13 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
   test:
     name: test
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
 {{- range $val := .Config.PostTest }}
 {{ indent 6 $val }}
 {{- end -}}
