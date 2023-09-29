@@ -20,7 +20,7 @@ func init() {
 
 type UpdatedVersion string
 
-// renovate: datasource=github-tags depName=actions/checkout versioning=loose
+// renovate: datasource=github-tags depName=actions/checkout versioning=semver-coerced
 const actionsCheckout = "v3"
 
 const Name = config.Name("buildaction")
