@@ -21,7 +21,7 @@ func init() {
 type UpdatedVersion string
 
 // renovate: datasource=github-tags depName=actions/checkout versioning=docker
-const actionsCheckout = "v3"
+const actionsCheckout = "v4"
 
 const Name = config.Name("buildaction")
 const RunPriority = drift.PriorityNormal
