@@ -35,7 +35,7 @@ const githubAppTokenActionVersion = "v1"
 // renovate: datasource=github-tags depName=go-semantic-release/action versioning=docker
 const goSemanticReleaseActionVersion = "v1"
 
-// renovate: datasource=github-tags depName=reviewdog/action-lint versioning=docker
+// renovate: datasource=github-tags depName=reviewdog/action-actionlint versioning=docker
 const reviewdogActionActionlintVersion = "v1"
 
 var Module = plannerhook.DefaultConfigModule("latest-defaults", Config{
