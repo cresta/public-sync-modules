@@ -23,7 +23,7 @@ type Config struct {
 }
 
 // renovate: datasource=github-tags depName=actions/checkout versioning=docker
-const actionsCheckout = "v3"
+const actionsCheckout = "v4"
 
 // renovate: datasource=github-tags depName=actions/setup-go versioning=docker
 const setupGo = "v3"
