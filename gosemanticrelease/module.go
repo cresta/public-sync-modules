@@ -5,15 +5,13 @@ import (
 	_ "embed"
 	"sort"
 
-	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles/templatemutator"
-
-	"github.com/getsyncer/syncer-core/fxregistry"
-
-	"github.com/getsyncer/syncer-core/config"
-
 	"github.com/getsyncer/public-sync-modules/buildaction"
 	"github.com/getsyncer/public-sync-modules/buildgo"
+	_ "github.com/getsyncer/public-sync-modules/latestversions"
+	"github.com/getsyncer/syncer-core/config"
 	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
+	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles/templatemutator"
+	"github.com/getsyncer/syncer-core/fxregistry"
 )
 
 func init() {
@@ -54,7 +52,11 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 })
 
 type Config struct {
-	RequiredSteps []string `yaml:"required_steps"`
+	RequiredSteps                  []string `yaml:"required_steps"`
+	GithubRunner                   string   `yaml:"github_runner"`
+	ActionsCheckoutVersion         string   `yaml:"actions_checkout_version"`
+	GithubAppTokenAction           string   `yaml:"github_app_token_action"`
+	GoSemanticReleaseActionVersion string   `yaml:"go_semantic_release_action_version"`
 }
 
 func (c Config) AllRequiredSteps() []string {

@@ -3,15 +3,12 @@ package goreleasercli
 import (
 	_ "embed"
 
-	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles/templatemutator"
-
-	"github.com/getsyncer/syncer-core/fxregistry"
-
-	"github.com/getsyncer/syncer-core/config"
-
 	"github.com/getsyncer/public-sync-modules/gitignore"
-
+	_ "github.com/getsyncer/public-sync-modules/latestversions"
+	"github.com/getsyncer/syncer-core/config"
 	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
+	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles/templatemutator"
+	"github.com/getsyncer/syncer-core/fxregistry"
 )
 
 func init() {
@@ -42,6 +39,10 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 })
 
 type Config struct {
-	LinkerVarPath string `yaml:"linkerVarPath"`
-	MainDir       string `yaml:"mainDir"`
+	LinkerVarPath           string `yaml:"linkerVarPath"`
+	MainDir                 string `yaml:"mainDir"`
+	ActionsCheckoutVersion  string `yaml:"actions_checkout_version"`
+	SetupGoVersion          string `yaml:"setup_go_version"`
+	GithubRunner            string `yaml:"github_runner"`
+	GoreleaserActionVersion string `yaml:"goreleaser_action_version"`
 }

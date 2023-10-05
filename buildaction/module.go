@@ -3,51 +3,33 @@ package buildaction
 import (
 	_ "embed"
 
-	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles/templatemutator"
-
-	"github.com/getsyncer/syncer-core/drift"
-
-	"github.com/getsyncer/syncer-core/fxregistry"
-
+	_ "github.com/getsyncer/public-sync-modules/latestversions"
 	"github.com/getsyncer/syncer-core/config"
-
 	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
+	"github.com/getsyncer/syncer-core/fxregistry"
 )
 
 func init() {
 	fxregistry.Register(Module)
 }
 
-type UpdatedVersion string
-
-// renovate: datasource=github-tags depName=actions/checkout versioning=docker
-const actionsCheckout = "v4"
-
 const Name = config.Name("buildaction")
-const RunPriority = drift.PriorityNormal
 
 type Config struct {
 	RunsOn                 string   `yaml:"runs_on"`
 	PostTest               []string `yaml:"post_test"`
 	Jobs                   []string `yaml:"jobs"`
-	ActionsCheckoutVersion string
+	ActionsCheckoutVersion string   `yaml:"actions_checkout_version"`
+	PrimaryBranch          string   `yaml:"primary_branch"`
+	GithubRunner           string   `yaml:"github_runner"`
 }
 
 //go:embed buildgithubaction.yaml.template
 var templateStr string
 
 var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
-	Name:     Name,
-	Priority: RunPriority,
-	Setup:    templatemutator.SimpleTemplateSetupMutator[Config](Name, setDefaults),
+	Name: Name,
 	Files: map[string]string{
 		".github/workflows/buildgithubaction.yaml": templateStr,
 	},
 })
-
-func setDefaults(cfg Config) Config {
-	if cfg.ActionsCheckoutVersion == "" {
-		cfg.ActionsCheckoutVersion = actionsCheckout
-	}
-	return cfg
-}

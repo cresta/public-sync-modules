@@ -4,18 +4,18 @@ name: Test for sync changes
 on:
   push:
     branches:
-      - main
+      - {{ .Config.PrimaryBranch }}
   pull_request:
     branches:
-      - main
+      - {{ .Config.PrimaryBranch }}
 
 jobs:
   build:
     name: Check for changes
-    runs-on: ubuntu-latest
+    runs-on: {{ .Config.GithubRunner }}
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
       - name: Check for changes
         uses: getsyncer/action-syncer/checkpr@main
         with:

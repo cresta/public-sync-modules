@@ -5,13 +5,13 @@ description: Lint workflow files using reviewdog
 on:
   pull_request:
     branches:
-      - main
+      - {{ .Config.PrimaryBranch }}
 
 jobs:
   actionlint:
-    runs-on: ubuntu-latest
+    runs-on: {{ .Config.GithubRunner }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: reviewdog/action-actionlint@v1
+      - uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
+      - uses: reviewdog/action-actionlint@{{ .Config.ReviewdogActionActionlintVersion }}
         with:
           fail_on_error: true

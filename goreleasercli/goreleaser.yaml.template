@@ -11,14 +11,14 @@ permissions:
 
 jobs:
   goreleaser:
-    runs-on: ubuntu-latest
+    runs-on: {{ .Config.GithubRunner }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
       - name: Set up Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@{{ .Config.SetupGoVersion }}
       - name: Run GoReleaser check
-        uses: goreleaser/goreleaser-action@v4
+        uses: goreleaser/goreleaser-action@{{ .Config.GoreleaserActionVersion }}
         with:
           distribution: goreleaser
           version: latest
@@ -27,7 +27,7 @@ jobs:
           GITHUB_TOKEN: {{ `${{ secrets.GITHUB_TOKEN }}`}}
           HOMEBREW_DEPLOY_KEY: {{ `${{ secrets.HOMEBREW_DEPLOY_KEY }}`}}
       - name: Run GoReleaser release
-        uses: goreleaser/goreleaser-action@v4
+        uses: goreleaser/goreleaser-action@{{ .Config.GoreleaserActionVersion }}
         if: startsWith(github.ref, 'refs/tags/')
         with:
           distribution: goreleaser

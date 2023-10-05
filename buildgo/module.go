@@ -3,13 +3,11 @@ package buildgo
 import (
 	_ "embed"
 
-	"github.com/getsyncer/syncer-core/drift"
-
-	"github.com/getsyncer/syncer-core/fxregistry"
-
+	_ "github.com/getsyncer/public-sync-modules/latestversions"
 	"github.com/getsyncer/syncer-core/config"
-
+	"github.com/getsyncer/syncer-core/drift"
 	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
+	"github.com/getsyncer/syncer-core/fxregistry"
 )
 
 func init() {
@@ -17,12 +15,17 @@ func init() {
 }
 
 const Name = config.Name("buildgo")
-const RunPriority = drift.PriorityNormal
+
+const RunPriority = drift.PriorityLow
 
 type Config struct {
-	RunsOn   string   `yaml:"runs_on"`
-	PostTest []string `yaml:"post_test"`
-	Jobs     []string `yaml:"jobs"`
+	RunsOn                 string   `yaml:"runs_on"`
+	PostTest               []string `yaml:"post_test"`
+	Jobs                   []string `yaml:"jobs"`
+	ActionsCheckoutVersion string   `yaml:"actions_checkout_version"`
+	PrimaryBranch          string   `yaml:"primary_branch"`
+	GithubRunner           string   `yaml:"github_runner"`
+	SetupGoVersion         string   `yaml:"setup_go_version"`
 }
 
 //go:embed buildgo.yaml.template

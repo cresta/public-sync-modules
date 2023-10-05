@@ -3,11 +3,10 @@ package lintworkflows
 import (
 	_ "embed"
 
-	"github.com/getsyncer/syncer-core/fxregistry"
-
+	_ "github.com/getsyncer/public-sync-modules/latestversions"
 	"github.com/getsyncer/syncer-core/config"
-
 	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
+	"github.com/getsyncer/syncer-core/fxregistry"
 )
 
 func init() {
@@ -15,6 +14,10 @@ func init() {
 }
 
 type Config struct {
+	PrimaryBranch                    string `yaml:"primary_branch"`
+	ActionsCheckoutVersion           string `yaml:"actions_checkout_version"`
+	ReviewdogActionActionlintVersion string `yaml:"reviewdog_action_actionlint_version"`
+	GithubRunner                     string `yaml:"github_runner"`
 }
 
 //go:embed lintworkflows.yaml.template

@@ -1,11 +1,11 @@
 lint:
   name: lint
-  runs-on: ubuntu-latest
+  runs-on: {{ .Config.GithubRunner }}
   steps:
     - name: Check out code
-      uses: actions/checkout@v3
+      uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
     - name: golangci-lint
-      uses: golangci/golangci-lint-action@v3
+      uses: golangci/golangci-lint-action@{{ .Config.GolangciLintVersion }}
       with:
         version: latest
         working-directory: {{ `${{ inputs.root }}` }}

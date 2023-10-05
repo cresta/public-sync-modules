@@ -4,20 +4,20 @@ name: Build and test go code
 on:
   push:
     branches:
-      - main
+      - {{ .Config.PrimaryBranch }}
   pull_request:
     branches:
-      - main
+      - {{ .Config.PrimaryBranch }}
 
 jobs:
   build:
     name: build
-    runs-on: ubuntu-latest
+    runs-on: {{ .Config.GithubRunner }}
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
       - name: Install Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@{{ .Config.SetupGoVersion }}
         with:
           go-version-file: go.mod
           cache-dependency-path: go.sum
@@ -30,12 +30,12 @@ jobs:
         run: go build -mod=readonly ./...
   test:
     name: test
-    runs-on: ubuntu-latest
+    runs-on: {{ .Config.GithubRunner }}
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
       - name: Install Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@{{ .Config.SetupGoVersion }}
         with:
           go-version-file: go.mod
           cache-dependency-path: go.sum

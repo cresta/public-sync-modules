@@ -4,22 +4,24 @@ import (
 	"context"
 	_ "embed"
 
-	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles/templatemutator"
-
-	"github.com/getsyncer/syncer-core/fxregistry"
-
-	"github.com/getsyncer/syncer-core/config"
-
-	"github.com/getsyncer/public-sync-modules/gosemanticrelease"
-
 	"github.com/getsyncer/public-sync-modules/buildgo"
-
+	"github.com/getsyncer/public-sync-modules/gosemanticrelease"
+	_ "github.com/getsyncer/public-sync-modules/latestversions"
+	"github.com/getsyncer/syncer-core/config"
 	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
+	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles/templatemutator"
+	"github.com/getsyncer/syncer-core/fxregistry"
 	"github.com/getsyncer/syncer-core/syncer"
 )
 
 func init() {
 	fxregistry.Register(Module)
+}
+
+type Config struct {
+	ActionsCheckoutVersion string `yaml:"actions_checkout_version"`
+	GithubRunner           string `yaml:"github_runner"`
+	GolangciLintVersion    string `yaml:"golangci_lint_version"`
 }
 
 //go:embed .golangci.yaml.template
@@ -58,5 +60,3 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 		},
 	}),
 })
-
-type Config struct{}

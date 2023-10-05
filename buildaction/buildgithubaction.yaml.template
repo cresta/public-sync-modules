@@ -4,21 +4,21 @@ name: Build and test github action
 on:
   push:
     branches:
-      - main
+      - {{ .Config.PrimaryBranch }}
   pull_request:
     branches:
-      - main
+      - {{ .Config.PrimaryBranch }}
 
 jobs:
   build:
     name: build
-    runs-on: ubuntu-latest
+    runs-on: {{ .Config.GithubRunner }}
     steps:
       - name: Check out code
         uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
   test:
     name: test
-    runs-on: ubuntu-latest
+    runs-on: {{ .Config.GithubRunner }}
     steps:
       - name: Check out code
         uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
