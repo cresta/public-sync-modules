@@ -7,6 +7,8 @@ import (
 
 	"github.com/getsyncer/public-sync-modules/buildaction"
 	"github.com/getsyncer/public-sync-modules/buildgo"
+
+	// To make sure we get defaults of the latest versions of actions
 	_ "github.com/getsyncer/public-sync-modules/latestversions"
 	"github.com/getsyncer/syncer-core/config"
 	"github.com/getsyncer/syncer-core/drift/syncers/templatefiles"
