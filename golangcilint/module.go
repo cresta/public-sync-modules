@@ -36,18 +36,17 @@ var Module = templatefiles.NewModule(templatefiles.NewModuleConfig[Config]{
 	Name: Name,
 	Files: map[string]string{
 		".golangci.yml": templateStrGolangCi,
+		"_job_":         updatedBuildGoLibTemplate,
+	},
+	PostGenProcessor: &templatemutator.PostGenConfigMutator[buildgo.Config]{
+		ToMutate:     buildgo.Name,
+		TemplateName: "_job_",
+		PostGenMutatorFunc: func(_ context.Context, renderedTemplate string, cfg buildgo.Config) (buildgo.Config, error) {
+			cfg.Jobs = append(cfg.Jobs, renderedTemplate)
+			return cfg, nil
+		},
 	},
 	Setup: syncer.MultiSetupSyncer([]syncer.SetupSyncer{
-		&templatemutator.SetupMutator[buildgo.Config]{
-			Name: buildgo.Name,
-			Mutator: &templatefiles.GenericConfigMutator[buildgo.Config]{
-				TemplateStr: updatedBuildGoLibTemplate,
-				MutateFunc: func(_ context.Context, renderedTemplate string, cfg buildgo.Config) (buildgo.Config, error) {
-					cfg.Jobs = append(cfg.Jobs, renderedTemplate)
-					return cfg, nil
-				},
-			},
-		},
 		&templatemutator.SetupMutator[gosemanticrelease.Config]{
 			Name: gosemanticrelease.Name,
 			Mutator: &templatefiles.GenericConfigMutator[gosemanticrelease.Config]{
