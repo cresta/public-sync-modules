@@ -3,7 +3,6 @@ package renovatebot
 import (
 	"bytes"
 	"context"
-	_ "embed"
 	"encoding/json"
 	"fmt"
 
@@ -57,7 +56,7 @@ func (c Config) Changes(ctx context.Context) (files.System[*files.StateWithChang
 		},
 		State: files.State{
 			Mode:          0644,
-			Contents:      []byte(content.String()),
+			Contents:      content.Bytes(),
 			FileExistence: files.FileExistencePresent,
 		},
 	}); err != nil {
