@@ -47,7 +47,9 @@ func (c Config) Changes(ctx context.Context) (files.System[*files.StateWithChang
 		}
 	}
 	var content bytes.Buffer
-	if err := json.NewEncoder(&content).Encode(c); err != nil {
+	enc := json.NewEncoder(&content)
+	enc.SetIndent("", "\t")
+	if err := enc.Encode(c); err != nil {
 		return ret, fmt.Errorf("failed to encode json: %w", err)
 	}
 	if err := ret.Add(".renovate-autogen.json", &files.StateWithChangeReason{
