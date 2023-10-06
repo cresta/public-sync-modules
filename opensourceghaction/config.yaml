@@ -11,8 +11,10 @@ logic:
   - source: github.com/getsyncer/public-sync-modules/lintworkflows
   - source: github.com/getsyncer/public-sync-modules/setlicense
   - source: github.com/getsyncer/public-sync-modules/synceractions
+  - source: github.com/getsyncer/public-sync-modules/renovatebot
 
 syncs:
+  - logic: renovatebot
   - logic: buildaction
   - logic: gitignore
   - logic: gosemanticrelease

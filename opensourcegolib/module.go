@@ -3,10 +3,8 @@ package opensourcegolib
 import (
 	_ "embed"
 
-	"github.com/getsyncer/syncer-core/fxregistry"
-
 	"github.com/getsyncer/syncer-core/config"
-
+	"github.com/getsyncer/syncer-core/fxregistry"
 	"github.com/getsyncer/syncer-core/syncer/childrenregistry"
 )
 

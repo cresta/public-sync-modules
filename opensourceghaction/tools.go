@@ -9,6 +9,7 @@ import (
 	_ "github.com/getsyncer/public-sync-modules/goreleasercli"
 	_ "github.com/getsyncer/public-sync-modules/gosemanticrelease"
 	_ "github.com/getsyncer/public-sync-modules/lintworkflows"
+	_ "github.com/getsyncer/public-sync-modules/renovatebot"
 	_ "github.com/getsyncer/public-sync-modules/setlicense"
 	_ "github.com/getsyncer/public-sync-modules/synceractions"
 )
