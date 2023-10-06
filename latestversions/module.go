@@ -27,7 +27,7 @@ const actionsCheckout = "v3"
 const setupGo = "v3"
 
 // renovate: datasource=github-tags depName=golangci/golangci-lint versioning=docker
-const golangCiLintVersion = "v1"
+const golangCiLintVersion = "v3"
 
 // renovate: datasource=github-tags depName=tibdex/github-app-token versioning=docker
 const githubAppTokenActionVersion = "v1"
