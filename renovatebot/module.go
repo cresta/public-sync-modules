@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"sort"
 
 	"github.com/getsyncer/syncer-core/syncer/planner"
 
@@ -46,6 +47,7 @@ func (c Config) Changes(ctx context.Context) (files.System[*files.StateWithChang
 			c.IgnorePaths = append(c.IgnorePaths, path.String())
 		}
 	}
+	sort.Strings(c.IgnorePaths)
 	var content bytes.Buffer
 	enc := json.NewEncoder(&content)
 	enc.SetIndent("", "\t")
