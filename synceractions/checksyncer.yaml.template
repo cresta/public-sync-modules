@@ -8,6 +8,7 @@ on:
   pull_request:
     branches:
       - {{ .Config.PrimaryBranch }}
+  workflow_dispatch: {}
 
 jobs:
   build:
