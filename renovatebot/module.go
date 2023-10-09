@@ -30,6 +30,7 @@ const Name = config.Name("renovatebot")
 type Config struct {
 	Schema      string   `yaml:"$schema" json:"$schema"`
 	IgnorePaths []string `yaml:"ignorePaths,omitempty" json:"ignorePaths,omitempty"`
+	GeneratedBy string   `yaml:"generatedBy,omitempty" json:"generatedBy,omitempty"`
 }
 
 func (c Config) Changes(ctx context.Context) (files.System[*files.StateWithChangeReason], error) {
@@ -37,6 +38,7 @@ func (c Config) Changes(ctx context.Context) (files.System[*files.StateWithChang
 	if c.Schema == "" {
 		c.Schema = "https://docs.renovatebot.com/renovate-schema.json"
 	}
+	c.GeneratedBy = drift.MagicTrackedString
 	seenChanges := planner.GetCurrentChanges(ctx)
 	for _, change := range seenChanges {
 		for _, path := range change.Paths() {

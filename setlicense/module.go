@@ -5,6 +5,8 @@ import (
 	_ "embed"
 	"fmt"
 
+	"github.com/getsyncer/syncer-core/syncer/planner"
+
 	"github.com/getsyncer/syncer-core/drift"
 
 	"github.com/getsyncer/syncer-core/fxregistry"
@@ -99,4 +101,5 @@ var Module = fx.Module("setlicense",
 			fx.ResultTags(`group:"syncers"`),
 		),
 	),
+	planner.FxOption(planner.WithFilesAllowedNoMagicString("LICENSE")),
 )
