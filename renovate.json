@@ -2,6 +2,6 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
-    "github>getsyncer/renovate-config:goconst-versions"
+    "local>getsyncer/public-sync-modules:.renovate-autogen.json"
   ]
 }
