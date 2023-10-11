@@ -31,6 +31,7 @@ type Config struct {
 	Schema      string   `yaml:"$schema" json:"$schema"`
 	IgnorePaths []string `yaml:"ignorePaths,omitempty" json:"ignorePaths,omitempty"`
 	GeneratedBy string   `yaml:"generatedBy,omitempty" json:"generatedBy,omitempty"`
+	Extends     []string `yaml:"extends,omitempty" json:"extends,omitempty"`
 }
 
 func (c Config) Changes(ctx context.Context) (files.System[*files.StateWithChangeReason], error) {
@@ -56,7 +57,7 @@ func (c Config) Changes(ctx context.Context) (files.System[*files.StateWithChang
 	if err := enc.Encode(c); err != nil {
 		return ret, fmt.Errorf("failed to encode json: %w", err)
 	}
-	if err := ret.Add(".renovate-autogen.json", &files.StateWithChangeReason{
+	if err := ret.Add("renovate.json", &files.StateWithChangeReason{
 		ChangeReason: &files.ChangeReason{
 			Reason: "renovatebot",
 		},
