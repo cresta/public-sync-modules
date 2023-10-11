@@ -20,7 +20,7 @@ syncs:
   - logic: renovatebot
     config:
       extends:
-      - github>getsyncer/renovate-config
+        - "github>getsyncer/renovate-config"
   - logic: gitignore
   - logic: golangcilint
   - logic: goreleasercli
