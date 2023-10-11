@@ -31,7 +31,7 @@ const setupGo = "v3"
 const golangCiLintVersion = "v3"
 
 // renovate: datasource=github-tags depName=tibdex/github-app-token versioning=docker
-const githubAppTokenActionVersion = "v1"
+const githubAppTokenActionVersion = "v2"
 
 // renovate: datasource=github-tags depName=go-semantic-release/action versioning=docker
 const goSemanticReleaseActionVersion = "v1"
