@@ -31,7 +31,7 @@ syncs:
   - logic: renovatebot
     config:
       extends:
-        - hello-world.json
+        - local>org/repo:hello-world.json
 `
 	t.Run("with-config", drifttest.WithRun(config2, files.SimpleState(map[string]string{}), func(t *testing.T, items *drifttest.Items) {
 		items.TestRun.MustExitCode(t, 0)

@@ -54,6 +54,7 @@ func (c Config) Changes(ctx context.Context) (files.System[*files.StateWithChang
 	var content bytes.Buffer
 	enc := json.NewEncoder(&content)
 	enc.SetIndent("", "\t")
+	enc.SetEscapeHTML(false)
 	if err := enc.Encode(c); err != nil {
 		return ret, fmt.Errorf("failed to encode json: %w", err)
 	}
