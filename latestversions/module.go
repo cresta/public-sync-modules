@@ -40,7 +40,7 @@ const goSemanticReleaseActionVersion = "v1"
 const reviewdogActionActionlintVersion = "v1"
 
 // renovate: datasource=github-tags depName=goreleaser/goreleaser-action versioning=docker
-const goReleaserActionVersion = "v4"
+const goReleaserActionVersion = "v5"
 
 var Module = plannerhook.DefaultConfigModule("latest-defaults", Config{
 	ActionsCheckoutVersion:           actionsCheckout,
