@@ -18,6 +18,9 @@ logic:
 syncs:
   - logic: buildgo
   - logic: renovatebot
+    config:
+      extends:
+      - github>getsyncer/renovate-config
   - logic: gitignore
   - logic: golangcilint
   - logic: goreleasercli
