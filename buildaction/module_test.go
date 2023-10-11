@@ -47,7 +47,7 @@ syncs:
 `
 	t.Run("make-new-file", drifttest.WithRun(config3, drifttest.ReasonableSampleFilesystem(), func(t *testing.T, items *drifttest.Items) {
 		items.TestRun.MustExitCode(t, 0)
-		drifttest.FileContains(t, ".renovate-autogen.json", ".github/workflows/buildgithubaction.yaml")
+		drifttest.FileContains(t, "renovate.json", ".github/workflows/buildgithubaction.yaml")
 		drifttest.FileContains(t, ".github/workflows/buildgithubaction.yaml", "actions/checkout@v1235")
 	}))
 }
