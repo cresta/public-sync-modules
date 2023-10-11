@@ -15,6 +15,9 @@ logic:
 
 syncs:
   - logic: renovatebot
+    config:
+      extends:
+        - github>getsyncer/renovate-config
   - logic: buildaction
   - logic: gitignore
   - logic: gosemanticrelease
