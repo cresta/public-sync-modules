@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/cresta/zapctx v0.0.3
-	github.com/getsyncer/syncer-core v1.14.3
+	github.com/getsyncer/syncer-core v1.14.4
 	go.uber.org/fx v1.20.0
 )
 
