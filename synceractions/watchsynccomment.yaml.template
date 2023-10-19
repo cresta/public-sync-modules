@@ -1,5 +1,5 @@
 # {{ .RunData.AutogenMsg }}
-name: Syncer reforamt
+name: Syncer reformat
 
 on:
   pull_request:
@@ -26,6 +26,9 @@ jobs:
         with:
           ref: {{ `${{ steps.get-branch.outputs.branch }} `}}
           ssh-key: {{ `${{ secrets.DEPLOY_KEY }} `}}
+{{- range $val := .Config.SetupGoMods }}
+{{ indent 6 $val }}
+{{- end }}
       - name: Run apply
         uses: getsyncer/action-syncer/updatepr@main
         with:
