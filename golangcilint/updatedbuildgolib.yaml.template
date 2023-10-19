@@ -4,6 +4,9 @@ lint:
   steps:
     - name: Check out code
       uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
+{{- range $val := .Config.SetupGoMods }}
+{{ indent 6 $val }}
+{{- end }}
     - name: golangci-lint
       uses: golangci/golangci-lint-action@{{ .Config.GolangciLintVersion }}
       with:

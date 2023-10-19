@@ -15,9 +15,10 @@ func init() {
 }
 
 type Config struct {
-	PrimaryBranch          string `yaml:"primaryBranch"`
-	GithubRunner           string `yaml:"github_runner"`
-	ActionsCheckoutVersion string `yaml:"actions_checkout_version"`
+	PrimaryBranch          string   `yaml:"primaryBranch"`
+	GithubRunner           string   `yaml:"github_runner"`
+	ActionsCheckoutVersion string   `yaml:"actions_checkout_version"`
+	SetupGoMods            []string `yaml:"setup_go_mods"`
 }
 
 //go:embed watchsynccomment.yaml.template

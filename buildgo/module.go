@@ -23,6 +23,7 @@ type Config struct {
 	RunsOn                 string   `yaml:"runs_on"`
 	PostTest               []string `yaml:"post_test"`
 	Jobs                   []string `yaml:"jobs"`
+	SetupGoMods            []string `yaml:"setup_go_mods"`
 	ActionsCheckoutVersion string   `yaml:"actions_checkout_version"`
 	PrimaryBranch          string   `yaml:"primary_branch"`
 	GithubRunner           string   `yaml:"github_runner"`

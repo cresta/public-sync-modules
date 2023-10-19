@@ -17,6 +17,9 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
+{{- range $val := .Config.SetupGoMods }}
+{{ indent 6 $val }}
+{{- end -}}
       - name: Check for changes
         uses: getsyncer/action-syncer/checkpr@main
         with:

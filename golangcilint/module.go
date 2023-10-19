@@ -21,9 +21,10 @@ func init() {
 }
 
 type Config struct {
-	ActionsCheckoutVersion string `yaml:"actions_checkout_version"`
-	GithubRunner           string `yaml:"github_runner"`
-	GolangciLintVersion    string `yaml:"golangci_lint_version"`
+	ActionsCheckoutVersion string   `yaml:"actions_checkout_version"`
+	GithubRunner           string   `yaml:"github_runner"`
+	GolangciLintVersion    string   `yaml:"golangci_lint_version"`
+	SetupGoMods            []string `yaml:"setup_go_mods"`
 }
 
 //go:embed .golangci.yaml.template
