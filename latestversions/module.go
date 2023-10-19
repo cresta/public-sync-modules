@@ -32,7 +32,7 @@ const setupGo = "v4"
 const golangCiLintVersion = "v3"
 
 // renovate: datasource=github-tags depName=peter-murray/workflow-application-token-action versioning=docker
-const peterMurrayWorkflowApplicationTokenActionVersion = "v1"
+const peterMurrayWorkflowApplicationTokenActionVersion = "v2"
 
 // renovate: datasource=github-tags depName=tibdex/github-app-token versioning=docker
 const githubAppTokenActionVersion = "v2"
