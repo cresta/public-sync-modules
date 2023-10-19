@@ -15,10 +15,14 @@ func init() {
 }
 
 type Config struct {
-	PrimaryBranch          string   `yaml:"primaryBranch"`
-	GithubRunner           string   `yaml:"github_runner"`
-	ActionsCheckoutVersion string   `yaml:"actions_checkout_version"`
-	SetupGoMods            []string `yaml:"setup_go_mods"`
+	PrimaryBranch                                    string   `yaml:"primary_branch"`
+	GithubRunner                                     string   `yaml:"github_runner"`
+	ActionsCheckoutVersion                           string   `yaml:"actions_checkout_version"`
+	SetupGoMods                                      []string `yaml:"setup_go_mods"`
+	RepushOnActor                                    string   `yaml:"repush_on_actor"`
+	PeterMurrayWorkflowApplicationTokenActionVersion string   `yaml:"peter_murray_workflow_application_token_action_version"`
+	RepushApp                                        string   `yaml:"repush_app"`
+	RepushAppPem                                     string   `yaml:"repush_app_pem"`
 }
 
 //go:embed watchsynccomment.yaml.template

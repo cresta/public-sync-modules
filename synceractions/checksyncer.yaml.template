@@ -4,23 +4,45 @@ name: Test for sync changes
 on:
   push:
     branches:
-      - {{ .Config.PrimaryBranch }}
+      - {{ or .Config.PrimaryBranch "main" }}
   pull_request:
     branches:
-      - {{ .Config.PrimaryBranch }}
+      - {{ or .Config.PrimaryBranch "main" }}
   workflow_dispatch: {}
 
 jobs:
-  build:
+  check:
     name: Check for changes
+    {{- if .Config.RepushOnActor -}}
+    if: github.event_name != 'pull_request' || github.actor != '{{ .Config.RepushOnActor }}'
+    {{- end }}
     runs-on: {{ .Config.GithubRunner }}
     steps:
-      - name: Check out code
+      - name: Check out code (without token)
         uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
 {{- range $val := .Config.SetupGoMods }}
 {{ indent 6 $val }}
 {{- end }}
       - name: Check for changes
+        if: steps.get_workflow_token.outputs.token == ''
         uses: getsyncer/action-syncer/checkpr@main
         with:
           token: {{ `${{ secrets.GITHUB_TOKEN }}` }}
+{{ if .Config.RepushOnActor }}
+  fix:
+    name: Fix any sync changes
+    runs-on: {{ .Config.GithubRunner }}
+    if: github.event_name == 'pull_request' && github.actor == '{{ .Config.RepushOnActor }}'
+    steps:
+      - name: Check out code (with token)
+        uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
+        with:
+          ssh-key: {{ `${{ secrets.DEPLOY_KEY }}` }}
+{{- range $val := .Config.SetupGoMods }}
+{{ indent 6 $val }}
+{{- end }}
+      - name: Push back any changes
+        uses: getsyncer/action-syncer/updatepr@main
+        with:
+          token: {{ `${{ steps.generate_token.outputs.token }}` }}
+{{ end }}
