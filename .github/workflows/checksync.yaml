@@ -15,10 +15,9 @@ jobs:
     name: Check for changes
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code (without token)
+      - name: Check out code
         uses: actions/checkout@v4
       - name: Check for changes
-        if: steps.get_workflow_token.outputs.token == ''
         uses: getsyncer/action-syncer/checkpr@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
