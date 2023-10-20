@@ -33,7 +33,7 @@ jobs:
     runs-on: {{ .Config.GithubRunner }}
     if: github.event_name == 'pull_request' && github.actor == '{{ .Config.RepushOnActor }}'
     steps:
-      - uses: actions/create-github-app-token@v1
+      - uses: actions/create-github-app-token@{{ .Config.CreateGithubAppTokenVersion }}
         id: generate_token
         with:
           app-id: {{ `${{ vars.SYNCER_APP_ID }}` }}

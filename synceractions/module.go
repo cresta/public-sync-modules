@@ -19,6 +19,7 @@ type Config struct {
 	GithubRunner                                     string   `yaml:"github_runner"`
 	ActionsCheckoutVersion                           string   `yaml:"actions_checkout_version"`
 	SetupGoMods                                      []string `yaml:"setup_go_mods"`
+	CreateGithubAppTokenVersion                      string   `yaml:"create_github_app_token_version"`
 	RepushOnActor                                    string   `yaml:"repush_on_actor"`
 	PeterMurrayWorkflowApplicationTokenActionVersion string   `yaml:"peter_murray_workflow_application_token_action_version"`
 	RepushApp                                        string   `yaml:"repush_app"`
