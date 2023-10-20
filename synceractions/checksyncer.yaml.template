@@ -13,18 +13,17 @@ on:
 jobs:
   check:
     name: Check for changes
-    {{- if .Config.RepushOnActor -}}
+    {{- if .Config.RepushOnActor }}
     if: github.event_name != 'pull_request' || github.actor != '{{ .Config.RepushOnActor }}'
     {{- end }}
     runs-on: {{ .Config.GithubRunner }}
     steps:
-      - name: Check out code (without token)
+      - name: Check out code
         uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
 {{- range $val := .Config.SetupGoMods }}
 {{ indent 6 $val }}
 {{- end }}
       - name: Check for changes
-        if: steps.get_workflow_token.outputs.token == ''
         uses: getsyncer/action-syncer/checkpr@main
         with:
           token: {{ `${{ secrets.GITHUB_TOKEN }}` }}
