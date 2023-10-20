@@ -25,6 +25,7 @@ type Config struct {
 	GithubRunner           string   `yaml:"github_runner"`
 	GolangciLintVersion    string   `yaml:"golangci_lint_version"`
 	SetupGoMods            []string `yaml:"setup_go_mods"`
+	SetupGoVersion         string   `yaml:"setup_go_version"`
 }
 
 //go:embed .golangci.yaml.template

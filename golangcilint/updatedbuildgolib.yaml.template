@@ -4,6 +4,12 @@ lint:
   steps:
     - name: Check out code
       uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
+    - name: Install Go
+      uses: actions/setup-go@{{ .Config.SetupGoVersion }}
+      with:
+        go-version-file: go.mod
+        cache-dependency-path: go.sum
+        cache: true
 {{- range $val := .Config.SetupGoMods }}
 {{ indent 6 $val }}
 {{- end }}
