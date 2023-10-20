@@ -33,15 +33,21 @@ jobs:
     runs-on: {{ .Config.GithubRunner }}
     if: github.event_name == 'pull_request' && github.actor == '{{ .Config.RepushOnActor }}'
     steps:
+      - uses: actions/create-github-app-token@v1
+        id: generate_token
+        with:
+          app-id: {{ `${{ vars.SYNCER_APP_ID }}` }}
+          private-key: {{ `${{ secrets.SYNCER_APP_PEM }}` }}
       - name: Check out code (with token)
         uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
         with:
-          ssh-key: {{ `${{ secrets.DEPLOY_KEY }}` }}
+          token: {{ `${{ steps.generate_token.outputs.token }}` }}
+          ref: {{ `${{ github.event.pull_request.head.ref }}` }}
 {{- range $val := .Config.SetupGoMods }}
 {{ indent 6 $val }}
 {{- end }}
       - name: Push back any changes
         uses: getsyncer/action-syncer/updatepr@main
         with:
-          token: {{ `${{ secrets.GITHUB_TOKEN }}` }}
+          token: {{ `${{ steps.generate_token.outputs.token }}` }}
 {{ end }}

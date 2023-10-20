@@ -7,12 +7,11 @@ bump_tag:
   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
   steps:
     - uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
-    - name: Generate token
+    - uses: actions/create-github-app-token@v1
       id: generate_token
-      uses: tibdex/github-app-token@{{ .Config.GithubAppTokenAction }}
       with:
-        app_id: {{ `${{ vars.AUTOUPDATE_BOT_APP_ID }}` }}
-        private_key: {{ `${{ secrets.AUTOUPDATE_BOT_PEM }}` }}
+        app-id: {{ `${{ vars.AUTOUPDATE_BOT_APP_ID }}` }}
+        private-key: {{ `${{ secrets.AUTOUPDATE_BOT_PEM }}` }}
     - uses: go-semantic-release/action@{{ .Config.GoSemanticReleaseActionVersion }}
       env:
         # Note: We use this token to bump the tags because the default GITHUB_TOKEN won't trigger workflows,
