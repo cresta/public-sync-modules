@@ -10,17 +10,16 @@ func init() {
 }
 
 type Config struct {
-	ActionsCheckoutVersion                           string `yaml:"actions_checkout_version"`
-	SetupGoVersion                                   string `yaml:"setup_go_version"`
-	PrimaryBranch                                    string `yaml:"primary_branch"`
-	CreateGithubAppTokenVersion                      string `yaml:"create_github_app_token_version"`
-	GithubRunner                                     string `yaml:"github_runner"`
-	GolangciLintVersion                              string `yaml:"golangci_lint_version"`
-	GithubAppTokenAction                             string `yaml:"github_app_token_action"`
-	GoSemanticReleaseActionVersion                   string `yaml:"go_semantic_release_action_version"`
-	PeterMurrayWorkflowApplicationTokenActionVersion string `yaml:"peter_murray_workflow_application_token_action_version"`
-	ReviewdogActionActionlintVersion                 string `yaml:"reviewdog_action_actionlint_version"`
-	GoreleaserActionVersion                          string `yaml:"goreleaser_action_version"`
+	ActionsCheckoutVersion           string `yaml:"actions_checkout_version"`
+	SetupGoVersion                   string `yaml:"setup_go_version"`
+	PrimaryBranch                    string `yaml:"primary_branch"`
+	CreateGithubAppTokenVersion      string `yaml:"create_github_app_token_version"`
+	GithubRunner                     string `yaml:"github_runner"`
+	GolangciLintVersion              string `yaml:"golangci_lint_version"`
+	GithubAppTokenAction             string `yaml:"github_app_token_action"`
+	GoSemanticReleaseActionVersion   string `yaml:"go_semantic_release_action_version"`
+	ReviewdogActionActionlintVersion string `yaml:"reviewdog_action_actionlint_version"`
+	GoreleaserActionVersion          string `yaml:"goreleaser_action_version"`
 }
 
 // renovate: datasource=github-tags depName=actions/checkout versioning=docker
@@ -31,9 +30,6 @@ const setupGo = "v4"
 
 // renovate: datasource=github-tags depName=golangci/golangci-lint versioning=docker
 const golangCiLintVersion = "v3"
-
-// renovate: datasource=github-tags depName=peter-murray/workflow-application-token-action versioning=docker
-const peterMurrayWorkflowApplicationTokenActionVersion = "v1"
 
 // renovate: datasource=github-tags depName=tibdex/github-app-token versioning=docker
 const githubAppTokenActionVersion = "v2"
@@ -51,15 +47,14 @@ const goReleaserActionVersion = "v5"
 const createGithubAppTokenVersion = "v1"
 
 var Module = plannerhook.DefaultConfigModule("latest-defaults", Config{
-	ActionsCheckoutVersion:                           actionsCheckout,
-	SetupGoVersion:                                   setupGo,
-	GolangciLintVersion:                              golangCiLintVersion,
-	GithubAppTokenAction:                             githubAppTokenActionVersion,
-	GoSemanticReleaseActionVersion:                   goSemanticReleaseActionVersion,
-	PeterMurrayWorkflowApplicationTokenActionVersion: peterMurrayWorkflowApplicationTokenActionVersion,
-	ReviewdogActionActionlintVersion:                 reviewdogActionActionlintVersion,
-	CreateGithubAppTokenVersion:                      createGithubAppTokenVersion,
-	GoreleaserActionVersion:                          goReleaserActionVersion,
-	PrimaryBranch:                                    "main",
-	GithubRunner:                                     "ubuntu-latest",
+	ActionsCheckoutVersion:           actionsCheckout,
+	SetupGoVersion:                   setupGo,
+	GolangciLintVersion:              golangCiLintVersion,
+	GithubAppTokenAction:             githubAppTokenActionVersion,
+	GoSemanticReleaseActionVersion:   goSemanticReleaseActionVersion,
+	ReviewdogActionActionlintVersion: reviewdogActionActionlintVersion,
+	CreateGithubAppTokenVersion:      createGithubAppTokenVersion,
+	GoreleaserActionVersion:          goReleaserActionVersion,
+	PrimaryBranch:                    "main",
+	GithubRunner:                     "ubuntu-latest",
 })
