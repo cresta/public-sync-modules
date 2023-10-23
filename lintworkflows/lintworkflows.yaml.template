@@ -1,6 +1,5 @@
 # {{ .RunData.AutogenMsg }}
 name: Lint Workflows
-description: Lint workflow files using reviewdog
 
 on:
   pull_request:
