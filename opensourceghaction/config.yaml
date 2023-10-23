@@ -3,6 +3,8 @@ version: 1
 config:
   company: "getsyncer"
   owner: "@getsyncer/maintainers"
+  repush_on_actor: renovate[bot]
+
 
 logic:
   - source: github.com/getsyncer/public-sync-modules/buildaction
