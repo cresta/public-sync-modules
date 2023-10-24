@@ -29,7 +29,7 @@ jobs:
     name: Fix any sync changes
     needs: check
     runs-on: {{ .Config.GithubRunner }}
-    if: {{ `${{ !canceled() && needs.check.result == 'failure' && github.event_name == 'pull_request' && github.actor == '` }}{{ .Config.RepushOnActor }}{{ `' }}`}}
+    if: {{ `${{ !cancelled() && needs.check.result == 'failure' && github.event_name == 'pull_request' && github.actor == '` }}{{ .Config.RepushOnActor }}{{ `' }}`}}
     steps:
       - uses: actions/create-github-app-token@{{ .Config.CreateGithubAppTokenVersion }}
         id: generate_token
