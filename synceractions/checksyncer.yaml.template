@@ -13,9 +13,6 @@ on:
 jobs:
   check:
     name: Check for changes
-    {{- if .Config.RepushOnActor }}
-    if: github.event_name != 'pull_request' || github.actor != '{{ .Config.RepushOnActor }}'
-    {{- end }}
     runs-on: {{ .Config.GithubRunner }}
     steps:
       - name: Check out code
@@ -30,8 +27,9 @@ jobs:
 {{ if .Config.RepushOnActor }}
   fix:
     name: Fix any sync changes
+    needs: check
     runs-on: {{ .Config.GithubRunner }}
-    if: github.event_name == 'pull_request' && github.actor == '{{ .Config.RepushOnActor }}'
+    if: needs.check.result == 'failure' && github.event_name == 'pull_request' && github.actor == '{{ .Config.RepushOnActor }}'
     steps:
       - uses: actions/create-github-app-token@{{ .Config.CreateGithubAppTokenVersion }}
         id: generate_token
