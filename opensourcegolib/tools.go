@@ -4,6 +4,7 @@ package opensourcegolib
 //nolint:revive
 import (
 	_ "github.com/getsyncer/public-sync-modules/buildgo"
+	_ "github.com/getsyncer/public-sync-modules/commitlint"
 	_ "github.com/getsyncer/public-sync-modules/gitignore"
 	_ "github.com/getsyncer/public-sync-modules/golangcilint"
 	_ "github.com/getsyncer/public-sync-modules/gosemanticrelease"

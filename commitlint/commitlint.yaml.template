@@ -1,0 +1,12 @@
+# {{ .RunData.AutogenMsg }}
+
+name: Lint Commit Messages
+on: [pull_request]
+
+jobs:
+  commitlint:
+    runs-on: {{ .Config.GithubRunner }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@{{ .Config.ActionsCheckoutVersion }}
+      - uses: wagoid/commitlint-github-action@{{ .Config.CommitLintVersion }}

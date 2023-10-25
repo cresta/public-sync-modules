@@ -20,6 +20,7 @@ type Config struct {
 	GoSemanticReleaseActionVersion   string `yaml:"go_semantic_release_action_version"`
 	ReviewdogActionActionlintVersion string `yaml:"reviewdog_action_actionlint_version"`
 	GoreleaserActionVersion          string `yaml:"goreleaser_action_version"`
+	CommitLintVersion                string `yaml:"commit_lint_version"`
 }
 
 // renovate: datasource=github-tags depName=actions/checkout versioning=docker
@@ -46,6 +47,9 @@ const goReleaserActionVersion = "v5"
 // renovate: datasource=github-tags depName=actions/create-github-app-token versioning=docker
 const createGithubAppTokenVersion = "v1"
 
+// renovate: datasource=github-tags depName=wagoid/commitlint-github-action versioning=docker
+const commitLintVersion = "v5"
+
 var Module = plannerhook.DefaultConfigModule("latest-defaults", Config{
 	ActionsCheckoutVersion:           actionsCheckout,
 	SetupGoVersion:                   setupGo,
@@ -54,6 +58,7 @@ var Module = plannerhook.DefaultConfigModule("latest-defaults", Config{
 	GoSemanticReleaseActionVersion:   goSemanticReleaseActionVersion,
 	ReviewdogActionActionlintVersion: reviewdogActionActionlintVersion,
 	CreateGithubAppTokenVersion:      createGithubAppTokenVersion,
+	CommitLintVersion:                commitLintVersion,
 	GoreleaserActionVersion:          goReleaserActionVersion,
 	PrimaryBranch:                    "main",
 	GithubRunner:                     "ubuntu-latest",

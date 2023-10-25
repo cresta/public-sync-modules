@@ -14,8 +14,10 @@ logic:
   - source: github.com/getsyncer/public-sync-modules/setlicense
   - source: github.com/getsyncer/public-sync-modules/synceractions
   - source: github.com/getsyncer/public-sync-modules/renovatebot
+  - source: github.com/getsyncer/public-sync-modules/commitlint
 
 syncs:
+  - logic: commitlint
   - logic: renovatebot
     config:
       extends:
