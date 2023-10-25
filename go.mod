@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/cresta/zapctx v0.0.3
-	github.com/getsyncer/syncer-core v1.15.11
+	github.com/getsyncer/syncer-core v1.15.14
 	go.uber.org/fx v1.20.1
 )
 
@@ -23,7 +23,7 @@ require (
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.5.0 // indirect
-	github.com/go-git/go-git/v5 v5.9.0 // indirect
+	github.com/go-git/go-git/v5 v5.10.0 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/uuid v1.3.1 // indirect
 	github.com/huandu/xstrings v1.4.0 // indirect
