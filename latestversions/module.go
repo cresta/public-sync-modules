@@ -27,7 +27,7 @@ type Config struct {
 const actionsCheckout = "v4"
 
 // renovate: datasource=github-tags depName=actions/setup-go versioning=docker
-const setupGo = "v4"
+const setupGo = "v5"
 
 // renovate: datasource=github-tags depName=golangci/golangci-lint versioning=docker
 const golangCiLintVersion = "v3"
