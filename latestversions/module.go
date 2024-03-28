@@ -48,7 +48,7 @@ const goReleaserActionVersion = "v5"
 const createGithubAppTokenVersion = "v1"
 
 // renovate: datasource=github-tags depName=wagoid/commitlint-github-action versioning=docker
-const commitLintVersion = "v5"
+const commitLintVersion = "v6"
 
 var Module = plannerhook.DefaultConfigModule("latest-defaults", Config{
 	ActionsCheckoutVersion:           actionsCheckout,
