@@ -42,7 +42,7 @@ const goSemanticReleaseActionVersion = "v1"
 const reviewdogActionActionlintVersion = "v1"
 
 // renovate: datasource=github-tags depName=goreleaser/goreleaser-action versioning=docker
-const goReleaserActionVersion = "v5"
+const goReleaserActionVersion = "v6"
 
 // renovate: datasource=github-tags depName=actions/create-github-app-token versioning=docker
 const createGithubAppTokenVersion = "v1"
